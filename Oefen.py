@@ -7,6 +7,7 @@ pygame.init()
  
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
+GREY =  ( 80,  80,  80)
 WHITE = (255, 255, 255)
 BLUE =  (  0,   0, 255)
 GREEN = (  0, 255,   0)
@@ -27,9 +28,19 @@ text2 = font.render("Aantal Spelers", True, WHITE)
 text3 = font.render("Exit", True, WHITE)
 class bordspel:
     def start(self):
-        pygame.draw.rect(screen, BLACK, [200, 50, 400, 50])
-        pygame.draw.rect(screen, BLACK, [200, 150, 400, 50])
-        pygame.draw.rect(screen, BLACK, [200, 250, 400, 50])
+        mx, my = pygame.mouse.get_pos()
+        if my > 50 and my < 100 and mx < 600 and mx > 200:
+            pygame.draw.rect(screen, GREY, [200, 50, 400, 50]) 
+        else:
+            pygame.draw.rect(screen, BLACK, [200, 50, 400, 50]) 
+        if my > 150 and my < 200 and mx < 600 and mx > 200:
+            pygame.draw.rect(screen, GREY, [200, 150, 400, 50])
+        else:
+            pygame.draw.rect(screen, BLACK, [200, 150, 400, 50])
+        if my > 250 and my < 300 and mx < 600 and mx > 200:
+            pygame.draw.rect(screen, GREY, [200, 250, 400, 50])
+        else:
+            pygame.draw.rect(screen, BLACK, [200, 250, 400, 50])
         screen.blit(text, (200, 50, 400, 50))
         screen.blit(text2, (200, 150, 400, 50))
         screen.blit(text3, (200, 250, 400, 50))
@@ -60,12 +71,12 @@ while not done:
     if event.type== pygame.MOUSEBUTTONDOWN:
             mx, my = pygame.mouse.get_pos()
             if my > 50 and my < 100 and mx < 600 and mx > 200:
-                 
+                print("eerste knop")
             if my > 150 and my < 200 and mx < 600 and mx > 200:
                 print ("Tweede Knop")
             if my > 250 and my < 300 and mx < 600 and mx > 200:
                 print ("Derde Knop")
-    
  
+    
 # Be IDLE friendly
 pygame.quit()
