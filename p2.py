@@ -48,10 +48,16 @@ class bordspel:
         screen.blit(text3, (370, 250, 400, 50))
     def aantalspelers():
         
-        
             screen.fill(WHITE)
             pygame.draw.rect(screen, BLACK, [200, 50, 400, 50])
             screen.blit(text4, (310, 50, 400, 50)) 
+            pygame.display.flip()
+    def bordspele():
+        
+        
+            screen.fill(WHITE)
+            pygame.draw.rect(screen, BLACK, [200, 50, 400, 50])
+            
             pygame.display.flip()
 
 
@@ -78,6 +84,15 @@ while not done:
      # Flag that we are done so we exit this loop
     if event.type== pygame.MOUSEBUTTONDOWN:
             mx, my = pygame.mouse.get_pos()
+            if my > 50 and my < 100 and mx < 600 and mx > 200:
+                bordspel.bordspele()
+                done = False
+                while not done:
+                    for event in pygame.event.get(): # User did something
+                        if event.type == pygame.QUIT: # If user clicked close
+                            done = True
+                pygame.display.flip()
+                pygame.display.update()
             if my > 150 and my < 200 and mx < 600 and mx > 200:
                 bordspel.aantalspelers()
                 done = False
@@ -87,10 +102,9 @@ while not done:
                             done = True
                 pygame.display.flip()
                 pygame.display.update()
-            if my > 150 and my < 200 and mx < 600 and mx > 200:
-                print ("Tweede Knop")
             if my > 250 and my < 300 and mx < 600 and mx > 200:
-                print ("Derde Knop")
+                pygame.quit()
+
  
     
 # Be IDLE friendly
