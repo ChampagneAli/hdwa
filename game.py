@@ -117,15 +117,17 @@ while not done:
                 pygame.display.update()
             if my > 250 and my < 300 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
                 bordspel.aantalspelers()
-                done = False
-                while not done:
+                subdone = False
+                while not subdone:
                     for event in pygame.event.get(): # User did something
                         if event.type== pygame.MOUSEBUTTONDOWN:
                             mx, my = pygame.mouse.get_pos()
                             if my > 530 and my < 570 and mx < screenWidth/2 - 350 and mx > screenWidth/2 - 440:
                                 bordspel.start()                                
                                 pygame.display.update()
+                                subdone = True
                         if event.type == pygame.QUIT: # If user clicked close
+                            subdone = True
                             done = True
                 pygame.display.flip()
                 pygame.display.update()
