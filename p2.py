@@ -14,13 +14,12 @@ GREEN = (  0, 255,   0)
 RED =   (255,   0,   0)
  
 # Set the height and width of the screen
-size = [800, 400]
-screen = pygame.display.set_mode(size)
-screen2 = pygame.display.set_mode(size)
+screenWidth = 1000
+screenHeight = 600
+screen = pygame.display.set_mode((screenWidth,screenHeight))
 pygame.display.set_caption("The Euromast")
  
 #Loop until the user clicks the close button.
-done = False
 clock = pygame.time.Clock()
 font = pygame.font.SysFont( "Times New Roman, Arial", 30)
 text = font.render("Start", True, WHITE)
@@ -31,21 +30,22 @@ class bordspel:
     def start(self):
         screen.fill(WHITE)
         mx, my = pygame.mouse.get_pos()
-        if my > 50 and my < 100 and mx < 600 and mx > 200:
-            pygame.draw.rect(screen, GREY, [200, 50, 400, 50]) 
+        if my > 150 and my < 200 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 150, 400, 50]) 
         else:
-            pygame.draw.rect(screen, BLACK, [200, 50, 400, 50]) 
-        if my > 150 and my < 200 and mx < 600 and mx > 200:
-            pygame.draw.rect(screen, GREY, [200, 150, 400, 50])
+            pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 150, 400, 50]) 
+        if my > 250 and my < 300 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 250, 400, 50])
         else:
-            pygame.draw.rect(screen, BLACK, [200, 150, 400, 50])
-        if my > 250 and my < 300 and mx < 600 and mx > 200:
-            pygame.draw.rect(screen, GREY, [200, 250, 400, 50])
+            pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 250, 400, 50])
+        if my > 350 and my < 400 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 400, 50])
         else:
-            pygame.draw.rect(screen, BLACK, [200, 250, 400, 50])
-        screen.blit(text, (370, 50, 400, 50))
-        screen.blit(text2, (310, 150, 400, 50))
-        screen.blit(text3, (370, 250, 400, 50))
+            pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 350, 400, 50])
+
+        screen.blit(text, [screenWidth/2 - 30, 150, 400, 50])
+        screen.blit(text2, [screenWidth/2- 85, 250, 400, 50])
+        screen.blit(text3, [screenWidth/2 - 25, 350, 400, 50])
     def aantalspelers():
         
             screen.fill(WHITE)
@@ -84,7 +84,7 @@ while not done:
      # Flag that we are done so we exit this loop
     if event.type== pygame.MOUSEBUTTONDOWN:
             mx, my = pygame.mouse.get_pos()
-            if my > 50 and my < 100 and mx < 600 and mx > 200:
+            if my > 150 and my < 200 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
                 bordspel.bordspele()
                 done = False
                 while not done:
@@ -93,7 +93,7 @@ while not done:
                             done = True
                 pygame.display.flip()
                 pygame.display.update()
-            if my > 150 and my < 200 and mx < 600 and mx > 200:
+            if my > 250 and my < 300 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
                 bordspel.aantalspelers()
                 done = False
                 while not done:
@@ -102,10 +102,11 @@ while not done:
                             done = True
                 pygame.display.flip()
                 pygame.display.update()
-            if my > 250 and my < 300 and mx < 600 and mx > 200:
-                pygame.quit()
+            if my > 350 and my < 400 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+                quit()
 
  
     
 # Be IDLE friendly
 pygame.quit()
+quit()
