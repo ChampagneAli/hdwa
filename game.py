@@ -30,7 +30,7 @@ text5 = font.render("Vink het aantal spelers aan", True, BLACK)
 text6 = font.render("Speler     Pc               Geef uw naam", True, BLACK)
 text7 = font.render("Terug", True, WHITE)
 class bordspel:
-    def start(self):
+    def start():
         screen.fill(WHITE)
         mx, my = pygame.mouse.get_pos()
         if my > 150 and my < 200 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
@@ -49,19 +49,8 @@ class bordspel:
         screen.blit(text, [screenWidth/2 - 30, 157, 400, 50])
         screen.blit(text2, [screenWidth/2- 85, 257, 400, 50])
         screen.blit(text3, [screenWidth/2 - 25, 357, 400, 50])
-        
-        
-        #deze weghalen!!!!
-        pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 530, 90, 40])
-        screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800])
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mx, my = pygame.mouse.get_pos()
-            if my > 530 and my < 570 and mx < screenWidth/2 - 350 and mx > screenWidth/2 - 440:
-                print ('hoi')
-        #deze weghalen!!!!
 
     def aantalspelers():
-
             screen.fill(WHITE)
             #geef uw naam vakjes
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 150, 300, 50]) 
@@ -84,11 +73,7 @@ class bordspel:
             #terug knop
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 530, 90, 40])
             screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800])
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mx, my = pygame.mouse.get_pos()
-                if my > 530 and my < 570 and mx < screenWidth/2 - 350 and mx > screenWidth/2 - 440:
-                    print ('hoi')
-
+            
             pygame.display.update()
     def spel():
         
@@ -100,8 +85,6 @@ class bordspel:
             pygame.display.flip()
 
 
-g = bordspel()
-
 done = False
 while not done:
     for event in pygame.event.get(): # User did something
@@ -112,7 +95,7 @@ while not done:
     
     
     #draw the buttons 
-    g.start()
+    bordspel.start()
     # Go ahead and update the screen with what we've drawn.
     # This MUST happen after all the other drawing commands.
     pygame.display.flip()
@@ -137,6 +120,11 @@ while not done:
                 done = False
                 while not done:
                     for event in pygame.event.get(): # User did something
+                        if event.type== pygame.MOUSEBUTTONDOWN:
+                            mx, my = pygame.mouse.get_pos()
+                            if my > 530 and my < 570 and mx < screenWidth/2 - 350 and mx > screenWidth/2 - 440:
+                                bordspel.start()                                
+                                pygame.display.update()
                         if event.type == pygame.QUIT: # If user clicked close
                             done = True
                 pygame.display.flip()
