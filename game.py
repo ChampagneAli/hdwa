@@ -45,7 +45,7 @@ class bordspel:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 350, 400, 50])
-
+        pygame.display.set_caption("The Euromast")
         screen.blit(text, [screenWidth/2 - 30, 157, 400, 50])
         screen.blit(text2, [screenWidth/2- 85, 257, 400, 50])
         screen.blit(text3, [screenWidth/2 - 25, 357, 400, 50])
@@ -73,7 +73,33 @@ class bordspel:
             #terug knop
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 530, 90, 40])
             screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800])
-            
+            #opslaan spelerknoppen
+            if speler1knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 160, 30, 30])
+                pygame.display.update()
+            if speler2knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 260, 30, 30])
+                pygame.display.update()
+            if speler3knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 360, 30, 30])
+                pygame.display.update()
+            if speler4knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 460, 30, 30])
+                pygame.display.update()
+            #opslaan pcknoppen
+            if pc1knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 160, 30, 30])
+                pygame.display.update() 
+            if pc2knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 260, 30, 30])
+                pygame.display.update()
+            if pc3knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 360, 30, 30])
+                pygame.display.update()
+            if pc4knop == 1:
+                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 460, 30, 30]) 
+                pygame.display.update()
+            pygame.display.set_caption("The Euromast - Aantal Spelers")
             pygame.display.update()
     def spel():
         
@@ -84,6 +110,14 @@ class bordspel:
             
             pygame.display.flip()
 
+speler1knop = 0
+speler2knop = 0
+speler3knop = 0
+speler4knop = 0
+pc1knop = 0
+pc2knop = 0
+pc3knop = 0
+pc4knop = 0
 
 done = False
 while not done:
@@ -119,18 +153,100 @@ while not done:
                 bordspel.aantalspelers()
                 subdone = False
                 while not subdone:
-                    for event in pygame.event.get(): # User did something
+                    for event in pygame.event.get(): 
+                        
                         if event.type== pygame.MOUSEBUTTONDOWN:
                             mx, my = pygame.mouse.get_pos()
-                            if my > 530 and my < 570 and mx < screenWidth/2 - 350 and mx > screenWidth/2 - 440:
-                                bordspel.start()                                
+                            #speler buttons veranderen in kleur
+                            if my > 160 and my < 190 and mx < screenWidth/2 - 410  and mx > screenWidth/2 - 440: #button1speler wordt kleur
+                                if pc1knop == 1:
+                                    pc1knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 350, 160, 30, 30])
+                                    print(str(pc1knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 160, 30, 30])
+                                speler1knop = 1 
+                                print(str(speler1knop))
                                 pygame.display.update()
-                                subdone = True
-                        if event.type == pygame.QUIT: # If user clicked close
+                            if my > 260 and my < 290 and mx < screenWidth/2 - 410  and mx > screenWidth/2 - 440: #button2speler wordt kleur
+                                if pc2knop == 1:
+                                    pc2knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 350, 260, 30, 30])
+                                    print(str(pc2knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 260, 30, 30])
+                                speler2knop = speler2knop + 1 
+                                print(str(speler2knop))
+                                pygame.display.update()
+                            if my > 360 and my < 390 and mx < screenWidth/2 - 410  and mx > screenWidth/2 - 440: #button3speler wordt kleur
+                                if pc3knop == 1:
+                                    pc3knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 350, 360, 30, 30])
+                                    print(str(pc3knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 360, 30, 30])
+                                speler3knop = speler3knop + 1 
+                                print(str(speler3knop))
+                                pygame.display.update()
+                            if my > 460 and my < 490 and mx < screenWidth/2 - 410  and mx > screenWidth/2 - 440: #button4speler wordt kleur
+                                if pc4knop == 1:
+                                    pc4knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 350, 460, 30, 30])
+                                    print(str(pc4knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 440, 460, 30, 30])
+                                speler4knop = speler4knop + 1 
+                                print(str(speler4knop))
+                                pygame.display.update()
+                            
+
+
+                            #pc buttons veranderen kleur
+                            if my > 160 and my < 190 and mx < screenWidth/2 - 320  and mx > screenWidth/2 - 350: #pc1speler wordt kleur
+                                if speler1knop == 1:
+                                    speler1knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 160, 30, 30])
+                                    print(str(speler1knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 160, 30, 30])
+                                pc1knop = 1 
+                                print(str(pc1knop))
+                                pygame.display.update()
+                            if my > 260 and my < 290 and mx < screenWidth/2 - 320  and mx > screenWidth/2 - 350: #pc2speler wordt kleur
+                                if speler2knop == 1:
+                                    speler2knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 260, 30, 30])
+                                    print(str(speler2knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 260, 30, 30])
+                                pc2knop = 1 
+                                print(str(pc2knop))
+                                pygame.display.update()
+                            if my > 360 and my < 390 and mx < screenWidth/2 - 320  and mx > screenWidth/2 - 350: #pc3speler wordt kleur
+                                if speler3knop == 1:
+                                    speler3knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 360, 30, 30])
+                                    print(str(speler3knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 360, 30, 30])
+                                pc3knop = 1 
+                                print(str(pc3knop))
+                                pygame.display.update()
+                            if my > 460 and my < 490 and mx < screenWidth/2 - 320  and mx > screenWidth/2 - 350: #pc4speler wordt kleur
+                                if speler4knop == 1:
+                                    speler4knop = 0
+                                    pygame.draw.rect(screen, BLACK, [screenWidth/2 - 440, 460, 30, 30])
+                                    print(str(speler4knop))
+                                pygame.draw.rect(screen, RED, [screenWidth/2 - 350, 460, 30, 30])
+                                pc4knop = 1 
+                                print(str(pc4knop))
+                                pygame.display.update()
+                           
+                            #terug knop  
+                            if my > 530 and my < 570 and mx < screenWidth/2 - 350 and mx > screenWidth/2 - 440: 
+                                bordspel.start()                             
+                                pygame.display.update()
+                                subdone = True #ga uit loop
+                        if event.type == pygame.QUIT: #Ga uit loop
                             subdone = True
                             done = True
+                
                 pygame.display.flip()
                 pygame.display.update()
+            
             if my > 350 and my < 400 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
                 quit()
             
