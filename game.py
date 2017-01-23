@@ -7,6 +7,7 @@ pygame.init()
 bg = pygame.image.load("FOTO achtergrond.png")
 vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
+arrow = pygame.image.load("FOTO arrow.png")
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -202,7 +203,7 @@ pygame.display.set_caption("The Euromast")
 #some variables
 clock = pygame.time.Clock()
 font = pygame.font.SysFont("Times New Roman, Arial", 30)
-fontsmall = pygame.font.SysFont("Times New Roman, Arial", 10)
+fontmedium = pygame.font.SysFont("Times New Roman, Arial", 50)
 fontlarge = pygame.font.SysFont("Times New Roman, Arial", 70)
 text = font.render("Start", True, WHITE)
 text2 = font.render("Aantal Spelers", True, WHITE)
@@ -213,6 +214,12 @@ text6 = font.render("Speler     Pc               Geef uw naam", True, BLACK)
 text7 = font.render("Terug", True, WHITE)
 text8 = font.render("hier komt het spel", True, BLACK)
 text9 = fontlarge.render("The Euromast", True, BLUE)
+text10 = font.render("Vink minimaal twee spelers/PC's aan.", True, RED)
+text11 = font.render("Vink minimaal één speler aan.", True, RED)
+
+#begin values voor de start error
+error10 = 0 
+error11 = 0
 
 #moet nog gefixt worden
 if herinner1== 1 or herinner2== 1 or herinner3== 1 or herinner4== 1:
@@ -256,6 +263,13 @@ class bordspel:
         screen.blit(text2, [screenWidth/2- 85, 257])
         screen.blit(text3, [screenWidth/2 - 25, 357])
         screen.blit(text9, [300, 20])
+        #geef error als op start geklikt word
+        if error10 == 1:
+            screen.blit(text10, [15, 95, 400, 50]) #start-error
+            screen.blit(arrow,(0,0))
+        if error11 == 1:
+            screen.blit(text11, [20, 100, 400, 50]) #start-error
+            screen.blit(arrow,(0,0))
         
     def aantalspelers():
             screen.blit(bg,(0,0)) #draw background image
@@ -309,7 +323,9 @@ class bordspel:
             pygame.display.set_caption("The Euromast - Aantal Spelers")
            
     def spel():       
-            screen.fill(GREEN)
+            
+
+
                                         #score fixen boven in scherm
             #SCORES = ''
             #if herinner1== 1 or herinner2== 1 or herinner3== 1 or herinner4== 1:
@@ -344,14 +360,21 @@ while not done:
     if left_mouse == 1:
             mx, my = pygame.mouse.get_pos()
             if 150 < my < 200 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'start'
-                bordspel.spel()
-                pygame.display.update()
-                done = False
-                while not done:
-                    for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
-                        if event.type == pygame.QUIT:
-                            done = True
+                if speler1knop + speler2knop + speler3knop + speler4knop + pc1knop + pc2knop + pc3knop + pc4knop < 2:
+                    error10 = 1
+                elif speler1knop + speler2knop + speler3knop + speler4knop == 0:
+                    error11 = 1
+                else:
+                    bordspel.spel()
+                    pygame.display.update()
+                    done = False
+                    while not done:
+                        for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
+                            if event.type == pygame.QUIT:
+                                done = True
             if 250 < my < 300 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'aantal spelers'
+                error10 = 0
+                error11 = 0
                 bordspel.aantalspelers()
                 pygame.display.update()
                 subdone = False
