@@ -28,6 +28,12 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
+#\simpele manier voor random getal ipv dice
+import random
+def rollDice():
+    roll=int(random.randint(1,6))
+    return roll
+
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 class ConfigError(KeyError): pass
 class Config:
