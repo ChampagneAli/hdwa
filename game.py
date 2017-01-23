@@ -193,6 +193,17 @@ herinner2 = 0
 herinner3 = 0
 herinner4 = 0
 
+#scores bijhouden
+n1score = 0
+n2score = 0
+n3score = 0
+n4score = 0
+
+#naam default
+n1var = 'Geen naam'
+n2var = 'Geen naam'
+n3var = 'Geen naam'
+n4var = 'Geen naam'
 
 # Set the height and width of the screen
 screenWidth = 1000
@@ -202,6 +213,7 @@ pygame.display.set_caption("The Euromast")
  
 #some variables
 clock = pygame.time.Clock()
+fontsmall = pygame.font.SysFont("Times New Roman, Arial", 20)
 font = pygame.font.SysFont("Times New Roman, Arial", 30)
 fontmedium = pygame.font.SysFont("Times New Roman, Arial", 50)
 fontlarge = pygame.font.SysFont("Times New Roman, Arial", 70)
@@ -216,14 +228,12 @@ text8 = font.render("hier komt het spel", True, BLACK)
 text9 = fontlarge.render("The Euromast", True, BLUE)
 text10 = font.render("Vink minimaal twee spelers/PC's aan.", True, RED)
 text11 = font.render("Vink minimaal één speler aan.", True, RED)
+text12 = fontsmall.render("Scores:", True, BLUE)
+#text13-16 zijn bezet
 
 #begin values voor de start error
 error10 = 0 
 error11 = 0
-
-#moet nog gefixt worden
-if herinner1== 1 or herinner2== 1 or herinner3== 1 or herinner4== 1:
-    text10 = fontsmall.render("SCORES     " + SCORES, True, BLACK)
 
 
                                                                       #DEFINED SCREENS AND FUNCTIONS
@@ -265,82 +275,82 @@ class bordspel:
         screen.blit(text9, [300, 20])
         #geef error als op start geklikt word
         if error10 == 1:
-            screen.blit(text10, [15, 95, 400, 50]) #start-error
+            screen.blit(text10, [15, 95]) #start-error
             screen.blit(arrow,(0,0))
         if error11 == 1:
-            screen.blit(text11, [20, 100, 400, 50]) #start-error
+            screen.blit(text11, [20, 100]) #start-error
             screen.blit(arrow,(0,0))
         
     def aantalspelers():
-            screen.blit(bg,(0,0)) #draw background image
-            #geef uw naam vakjes
-            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 150, 300, 50]) 
-            pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 155, 285, 40]) 
-            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 250, 300, 50]) 
-            pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 255, 285, 40]) 
-            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 300, 50]) 
-            pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 355, 285, 40]) 
-            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 450, 300, 50])
-            pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 455, 285, 40])
-            #teksten    
-            screen.blit(text5, [screenWidth/2 - 150, 35, 400, 50])
-            screen.blit(text6, [screenWidth/2 - 460, 100, 400, 50])
-            #terug knop
-            pygame.draw.rect(screen, BLUE, [screenWidth/2 - 440, 530, 90, 40])
-            screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800]) 
-            #opgeslagen spelervakjes
-            if speler1knop == 1:    screen.blit(vink,(60, 160))
-            else:   screen.blit(kruis,(60, 160))
-            if speler2knop == 1:    screen.blit(vink,(60, 260))
-            else:   screen.blit(kruis,(60, 260))
-            if speler3knop == 1:    screen.blit(vink,(60, 360))
-            else:   screen.blit(kruis,(60, 360))
-            if speler4knop == 1:    screen.blit(vink,(60, 460))
-            else:   screen.blit(kruis,(60, 460))
-            #opslaan pcknoppen
-            if pc1knop == 1:    screen.blit(vink,(150, 160))
-            else: screen.blit(kruis,(150, 160))
-            if pc2knop == 1:    screen.blit(vink,(150, 260))
-            else: screen.blit(kruis,(150, 260))
-            if pc3knop == 1:    screen.blit(vink,(150, 360))
-            else: screen.blit(kruis,(150, 360))
-            if pc4knop == 1:    screen.blit(vink,(150, 460)) 
-            else: screen.blit(kruis,(150, 460))
-            #opgeslagen naam schrijven
-            if herinner1 == 1:
-                if n1var != '' or n1var != None:
-                    n1.draw(screen)
-            if herinner2 == 1:
-                if n2var != '' or n2var != None:
-                    n2.draw(screen)
-            if herinner3 == 1:
-                if n3var != '' or n3var != None:
-                    n3.draw(screen)
-            if herinner4 == 1:
-                if n4var != '' or n4var != None:
-                    n4.draw(screen)
+        screen.blit(bg,(0,0)) #draw background image
+        #geef uw naam vakjes
+        pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 150, 300, 50]) 
+        pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 155, 285, 40]) 
+        pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 250, 300, 50]) 
+        pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 255, 285, 40]) 
+        pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 300, 50]) 
+        pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 355, 285, 40]) 
+        pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 450, 300, 50])
+        pygame.draw.rect(screen, WHITE, [screenWidth/2 - 193, 455, 285, 40])
+        #teksten    
+        screen.blit(text5, [screenWidth/2 - 150, 35])
+        screen.blit(text6, [screenWidth/2 - 460, 100])
+        #terug knop
+        pygame.draw.rect(screen, BLUE, [screenWidth/2 - 440, 530, 90, 40])
+        screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800]) 
+        #opgeslagen spelervakjes
+        if speler1knop == 1:    screen.blit(vink,(60, 160))
+        else:   screen.blit(kruis,(60, 160))
+        if speler2knop == 1:    screen.blit(vink,(60, 260))
+        else:   screen.blit(kruis,(60, 260))
+        if speler3knop == 1:    screen.blit(vink,(60, 360))
+        else:   screen.blit(kruis,(60, 360))
+        if speler4knop == 1:    screen.blit(vink,(60, 460))
+        else:   screen.blit(kruis,(60, 460))
+        #opslaan pcknoppen
+        if pc1knop == 1:    screen.blit(vink,(150, 160))
+        else: screen.blit(kruis,(150, 160))
+        if pc2knop == 1:    screen.blit(vink,(150, 260))
+        else: screen.blit(kruis,(150, 260))
+        if pc3knop == 1:    screen.blit(vink,(150, 360))
+        else: screen.blit(kruis,(150, 360))
+        if pc4knop == 1:    screen.blit(vink,(150, 460)) 
+        else: screen.blit(kruis,(150, 460))
+        #opgeslagen naam schrijven
+        if herinner1 == 1:
+            if n1var != '' or n1var != None:
+                n1.draw(screen)
+        if herinner2 == 1:
+            if n2var != '' or n2var != None:
+                n2.draw(screen)
+        if herinner3 == 1:
+            if n3var != '' or n3var != None:
+                n3.draw(screen)
+        if herinner4 == 1:
+            if n4var != '' or n4var != None:
+                n4.draw(screen)
 
-            pygame.display.set_caption("The Euromast - Aantal Spelers")
-           
-    def spel():       
-            
+        pygame.display.set_caption("The Euromast - Aantal Spelers")
 
+    def spel():
+        screen.fill(GREEN)
+        #scores
+        text13 = fontsmall.render(n1var + ": " + str(n1score), True, BLUE)
+        text14 = fontsmall.render(n2var + ": " + str(n2score), True, BLUE)
+        text15 = fontsmall.render(n3var + ": " + str(n3score), True, BLUE)
+        text16 = fontsmall.render(n4var + ": " + str(n4score), True, BLUE)
+        screen.blit(text12, [5, 5])
+        if speler1knop == 1 or pc1knop ==1:
+            screen.blit(text13, [15, 23])
+        if speler2knop == 1 or pc2knop == 1:
+            screen.blit(text14, [15, 41])
+        if speler3knop == 1 or pc3knop == 1:
+            screen.blit(text15, [15, 59])
+        if speler4knop == 1 or pc4knop == 1:
+            screen.blit(text16, [15, 77])
 
-                                        #score fixen boven in scherm
-            #SCORES = ''
-            #if herinner1== 1 or herinner2== 1 or herinner3== 1 or herinner4== 1:
-            #    text10 = fontsmall.render("SCORES     " + SCORES, True, BLACK)
-            #    screen.blit(text10, [0, 0]) 
-            pygame.display.set_caption("The Euromast - Start!")
+        pygame.display.set_caption("The Euromast - Start!")
 
-            #if speler1knop == 1 or pc1knop == 1:
-            #    SCORES += str(n1var) + ": 0          "
-            #if speler2knop == 1 or pc2knop == 1:
-            #    SCORES += str(n2var) + ": 0          "
-            #if speler3knop == 1 or pc3knop == 1:
-            #    SCORES += n3var + ": 0          "
-            #if speler4knop == 1 or pc4knop == 1:
-            #    SCORES += n4var + ": 0          "
 
 
                                                                       #THE MAIN WHILE LOOP 
@@ -365,6 +375,14 @@ while not done:
                 elif speler1knop + speler2knop + speler3knop + speler4knop == 0:
                     error11 = 1
                 else:
+                    if pc1knop == 1:
+                        n1var += ' (PC)'
+                    if pc2knop == 1:
+                        n2var += ' (PC)'
+                    if pc3knop == 1:
+                        n3var += ' (PC)'
+                    if pc4knop == 1:
+                        n4var += ' (PC)'
                     bordspel.spel()
                     pygame.display.update()
                     done = False
