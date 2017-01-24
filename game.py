@@ -8,6 +8,7 @@ bg = pygame.image.load("FOTO achtergrond.png")
 vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
 arrow = pygame.image.load("FOTO arrow.png")
+speelbord_bg = pygame.image.load("FOTO speelbord.png")
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -556,8 +557,12 @@ class bordspel:
         pygame.display.set_caption("The Euromast - Aantal Spelers")
 
     def spel():
+<<<<<<< HEAD
         pygame.mixer.music.play(-1)
         screen.fill(GREEN)
+=======
+        screen.blit(speelbord_bg,(0,0)) #draw background image
+>>>>>>> origin/master
         #scores
         text13 = fontsmall.render(n1var + ": " + str(n1score), True, BLUE)
         text14 = fontsmall.render(n2var + ": " + str(n2score), True, BLUE)
