@@ -29,6 +29,231 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
+<<<<<<< HEAD
+=======
+#sounds
+pygame.mixer.music.load('got.mp3')
+
+
+#alle vragen
+#entertainment categorie
+"""
+Welke bar in Rotterdam werd in 2009 de beste bar ter wereld benoemd?
+    A. De Witte Aap
+    B. Het NRC
+    C. Café de Beurs
+Hoe heet de bekendste escape room in Rotterdam?
+	A. R’dam Escape
+	B. Escape010
+	C. Room Escape
+Voor welk vervoermiddel is er geen tour door Rotterdam beschikbaar?
+	A. Segway
+	B. Boot
+	C. Auto
+Welk van de volgende winkels is niet rond de koopgoot?
+	A. H&M
+	B. Media Markt
+	C. The Sting
+In welke bioscoop vindt het Wildlife Film Festival plaats?
+	A. Cinerama
+	B. Pathé de Kuip
+	C. Pathé Schouwburgplein
+Voor welk museum staat het monument van Zadkine genaamd “De Verwoest Stad”?
+	A. Havenmuseum
+	B. Mariniersmuseum
+	C. Maritiem museum
+Waar geeft de Rotterdam Tours onder andere rondleidingen?
+	A. De Euromast
+	B. Museumplein
+	C. De Markthal
+Welke van de volgende Pathé bioscopen is niet in Rotterdam?
+	A. Pathé de Kuip
+	B. Pathé de Kroon
+	C. Pathé Schouwburgplein
+Hoeveel bezoekers zijn er jaarlijks bij de Marathon Rotterdam?
+	A. 925.000 bezoekers
+	B. 675.000 bezoekers
+	C. 830.000 bezoekers
+Waar kan je niet terecht om te gaan zwemmen?
+	A. Hoek van Holland
+	B. Euromast Park 
+	C. Plaswijckpark
+Welke landen kun je behalve Nederland ook in Miniworld Rotterdam zien?
+	A. Luxemburg en België
+	B. Duitsland en België
+	C. Duitsland en Frankrijk
+Hoe heet de culturele en culinaire ontdekkingstocht door Rotterdam?
+	A. Drive & Eat
+	B. Bicycle Diner
+	C. Bike & Bite
+Welk van de volgende restaurantboten in Rotterdam bestaat niet?
+	A. De Zwanenboot
+	B. De Pannenkoekenboot
+	C. De Berenboot
+"""
+#geografie
+"""
+Welke brug in Rotterdam heeft de volgende bijnaam: De zwaan.
+A.	De Willemsbrug
+B.	De Erasmusbrug
+C.	De van Briennenoordbrug
+Rotterdam is de hoofdstad van Nederland. 
+A.	 Waar
+B.	 Niet Waar
+Rotterdam is de hoofdstad van Zuid-Holland.
+A.	 Waar
+B.	 Niet Waar
+Rotterdam is de grootste stad van Nederland.
+A.	 Waar
+B.	 Niet Waar
+De haven van Rotterdam is de grootste haven van Nederland.
+A.	 Waar
+B.	 Niet Waar
+Wat is het belangrijkste vervoersmiddel in Rotterdam?
+A.	 Metro
+B.	 Auto
+C.	 Fiets
+Hoeveel millimeter regen valt er gemiddeld per jaar in Rotterdam?
+A.	 760 tot 780mm
+B.	 780 tot 800mm
+C.	 800 tot 820mm
+Hoeveel woningen zijn er ongeveer in Rotterdam?
+A.	 150.000
+B.	 300.000
+C.	 450.000
+Wat is het oudste gebouw van Rotterdam?
+A.	 Kerktoren hillegondakerk
+B.	 St. Laurenskerk.
+C.	 Stadhuis van Rotterdam
+Hoeveel mensen maken dagelijks gebruik van het openbaar vervoer in Rotterdam?
+A.	 800.000	
+B.	 900.000	
+C.	 1.000.000
+Wat is de oudste brug van Rotterdam?
+A.	 De Willemsbrug
+B.	 De Koninginnebrug
+C.	 De van Briennenoordbrug
+Rotterdam word ook wel de …. Genoemd
+A.	 stad der wonderen
+B.	 stad der steden
+C.	 Haven stad
+In welke provincie ligt Rotterdam?
+A.	 Noord-Holland
+B.	 Zuid-Holland
+C.	 Noord-Brabant
+Hoe heet de grootste rivier waar Rotterdam aan grenst?
+A.	 De Maas
+B.	 De Rijn
+C.	 De Waal
+"""
+#historie
+"""
+Waar dankt Rotterdam zijn naam aan?
+A.	Kooplieden hadden dit vroeger bedacht 
+B.	Aan de rivier de rotte
+C.	Er was een dam aangelegd in de maas
+Wat is het enigste overgebleven middeleeuws gebouw in de binnenstad van Rotterdam?
+A.	De oude haven
+B.	VOC magazijn
+C.	St. Laurenskerk
+Wie is de nachtburgemeester van Rotterdam?
+A.	Ahmed Aboutaleb 
+B.	Jules Deelder
+C.	Willem Alexander
+Was de eerste metrolijn in Nederland in Rotterdam geopend?
+A.	Waar, in 1968 
+B.	Niet waar 
+Wanneer is diergaarde Blijdorp geopend?
+A.	1855
+B.	1975
+C.	1915
+Welk gebouw (gebouwd in 1957) stond symbool voor de wederopbouw van de stad?
+A.	De Bijenkorf
+B.	De Kubuswoningen
+C.	The red apple
+Wat is de officiële naam van de koopgoot?
+A.	De ondergrondse winkelstraat
+B.	Beurstraverse
+C.	Gewoon de koopgoot
+In welk jaar heeft Rotterdam stadsrechten gekregen?
+A.	1250
+B.	1340 
+C.	1590
+Door welke architect(en) is de Euromast ontworpen?
+A.	Maaskant
+B.	Brinkman en van der Vlugt
+C.	c. Koolhaas 
+Hoe heette de haven van Rotterdam oorspronkelijk tijdens zijn ontstaan?
+A.	Waalhaven
+B.	De Maashaven
+C.	Europoort
+Rotterdam was tot 1870 een opslag haven, welke producten werden er onder ander opgeslagen?
+A.	Suiker
+B.	Wol
+C.	Cacao
+"""
+#sport
+"""
+In welk jaar startte de Tour de France in Rotterdam?
+A.	2000
+B.	2005
+C.	2010
+Welk tennistoernooi word er elk jaar in Ahoy gehouden?
+A.	ABN AMRO World Tennis Tournament
+B.	Ahoy Open
+C.	Heineken Open
+Wat is een hockeyclub uit Rotterdam?
+A.	HVGR
+B.	Focus
+C.	HC Rotterdam
+Welke manier van sport word het meest beoefend in Rotterdam?
+A.	Fitness
+B.	Voetbal
+C.	Basketbal
+Welke Olympiër groeide op in Rotterdam? 
+A.	Dorian van Rijsselberghe
+B.	Marhinde Verkerk
+C.	Edith Bosch
+Op welke baan vond het WK roeien in 2016 plaats?
+A.	Willem Alexander baan
+B.	Beatrix baan
+C.	Juliana baan
+Op welke positie in het veld speelde Coen Moulijn voor zowel Feyenoord als het Nederlands elftal? 
+A.	Rechtsback
+B.	Linksback
+C.	LinksbuitenHoeveel spelers staan er per team bij lacrosse op het veld?
+A.	9
+B.	10
+C.	11
+Hoe heet het stadion van Sparta Rotterdam?
+A.	De Toren
+B.	Het Kasteel
+C.	De Arena
+Hoe lang is de NN Marathon van Rotterdam?
+A.	42,125 km
+B.	42,450 km
+C.	42,680 km
+Een honkbal is groter dan een softbal. 
+A.	Waar
+B.	Niet Waar
+C.	Even groot
+Hoeveel mensen staan er achter de slagman bij honkbal?
+A.	1
+B.	2
+C.	3
+In welk jaar is de honkbalclub Neptunes opgericht?
+A.	1850
+B.	1875 
+C.	1900 
+"""
+
+#\simpele manier voor random getal ipv dice
+"""import random
+def rollDice():
+    roll=int(random.randint(1,6))
+    return roll
+"""
+>>>>>>> origin/master
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 class ConfigError(KeyError): pass
 class Config:
@@ -254,6 +479,7 @@ class bordspel:
         txtbx.draw(screen)
 
     def start():
+        pygame.mixer.music.play(-1)
         screen.fill(WHITE)
         screen.blit(bg,(0,0)) #draw background image
         mx, my = pygame.mouse.get_pos()
@@ -334,8 +560,13 @@ class bordspel:
         pygame.display.set_caption("The Euromast - Aantal Spelers")
 
     def spel():
+        pygame.mixer.music.play(-1)
         screen.blit(speelbord_bg,(0,0)) #draw background image
+<<<<<<< HEAD
         pygame.display.set_caption("The Euromast - Start!")
+=======
+
+>>>>>>> origin/master
         #scores
         text13 = fontsmall.render(n1var + ": " + str(n1score), True, BLUE)
         text14 = fontsmall.render(n2var + ": " + str(n2score), True, BLUE)
