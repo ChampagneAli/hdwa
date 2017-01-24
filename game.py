@@ -29,8 +29,6 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
-<<<<<<< HEAD
-=======
 #sounds
 pygame.mixer.music.load('got.mp3')
 
@@ -253,7 +251,6 @@ def rollDice():
     roll=int(random.randint(1,6))
     return roll
 """
->>>>>>> origin/master
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 class ConfigError(KeyError): pass
 class Config:
@@ -562,11 +559,8 @@ class bordspel:
     def spel():
         pygame.mixer.music.play(-1)
         screen.blit(speelbord_bg,(0,0)) #draw background image
-<<<<<<< HEAD
         pygame.display.set_caption("The Euromast - Start!")
-=======
 
->>>>>>> origin/master
         #scores
         text13 = fontsmall.render(n1var + ": " + str(n1score), True, BLUE)
         text14 = fontsmall.render(n2var + ": " + str(n2score), True, BLUE)
