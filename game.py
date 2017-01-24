@@ -613,5 +613,6 @@ while not done:
             
     
 # Be IDLE friendly
+# end
 pygame.quit()
 quit()
