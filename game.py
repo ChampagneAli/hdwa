@@ -28,6 +28,10 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
+#sounds
+pygame.mixer.music.load('got.mp3')
+
+
 #alle vragen
 #entertainment categorie
 """
@@ -241,11 +245,11 @@ C.	1900
 """
 
 #\simpele manier voor random getal ipv dice
-import random
+"""import random
 def rollDice():
     roll=int(random.randint(1,6))
     return roll
-
+"""
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 class ConfigError(KeyError): pass
 class Config:
@@ -471,6 +475,7 @@ class bordspel:
         txtbx.draw(screen)
 
     def start():
+        pygame.mixer.music.play(-1)
         screen.fill(WHITE)
         screen.blit(bg,(0,0)) #draw background image
         mx, my = pygame.mouse.get_pos()
@@ -551,6 +556,7 @@ class bordspel:
         pygame.display.set_caption("The Euromast - Aantal Spelers")
 
     def spel():
+        pygame.mixer.music.play(-1)
         screen.fill(GREEN)
         #scores
         text13 = fontsmall.render(n1var + ": " + str(n1score), True, BLUE)
