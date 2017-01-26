@@ -2,22 +2,15 @@ from pygame.locals import *
 import pygame, string, random, psycopg2
 from math import pi
 pygame.init()
-<<<<<<< HEAD
-
-=======
 #vraag
->>>>>>> origin/master
 # Background image is set as 'bg'
 bg = pygame.image.load("FOTO achtergrond.png")
 vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
 arrow = pygame.image.load("FOTO arrow.png")
 speelbord_bg = pygame.image.load("FOTO speelbord.png")
-<<<<<<< HEAD
-=======
 #sounds
 pygame.mixer.music.load('got.mp3')
->>>>>>> origin/master
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -38,18 +31,12 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 #sounds
 pygame.mixer.music.load('got.mp3')
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 # Use the database
 def interact_with_database(command):
     # Connect and set up cursor
@@ -99,10 +86,10 @@ def download_top_score():
 Welke bar in Rotterdam werd in 2009 de beste bar ter wereld benoemd?
     A. De Witte Aap
     B. Het NRC
-    C. Café de Beurs
+    C. Caf� de Beurs
 
 Hoe heet de bekendste escape room in Rotterdam?
-	A. R’dam Escape
+	A. R�dam Escape
 	B. Escape010
 	C. Room Escape
 Voor welk vervoermiddel is er geen tour door Rotterdam beschikbaar?
@@ -115,9 +102,9 @@ Welk van de volgende winkels is niet rond de koopgoot?
 	C. The Sting
 In welke bioscoop vindt het Wildlife Film Festival plaats?
 	A. Cinerama
-	B. Pathé de Kuip
-	C. Pathé Schouwburgplein
-Voor welk museum staat het monument van Zadkine genaamd “De Verwoest Stad”?
+	B. Path� de Kuip
+	C. Path� Schouwburgplein
+Voor welk museum staat het monument van Zadkine genaamd �De Verwoest Stad�?
 	A. Havenmuseum
 	B. Mariniersmuseum
 	C. Maritiem museum
@@ -125,10 +112,10 @@ Waar geeft de Rotterdam Tours onder andere rondleidingen?
 	A. De Euromast
 	B. Museumplein
 	C. De Markthal
-Welke van de volgende Pathé bioscopen is niet in Rotterdam?
-	A. Pathé de Kuip
-	B. Pathé de Kroon
-	C. Pathé Schouwburgplein
+Welke van de volgende Path� bioscopen is niet in Rotterdam?
+	A. Path� de Kuip
+	B. Path� de Kroon
+	C. Path� Schouwburgplein
 Hoeveel bezoekers zijn er jaarlijks bij de Marathon Rotterdam?
 	A. 925.000 bezoekers
 	B. 675.000 bezoekers
@@ -138,8 +125,8 @@ Waar kan je niet terecht om te gaan zwemmen?
 	B. Euromast Park 
 	C. Plaswijckpark
 Welke landen kun je behalve Nederland ook in Miniworld Rotterdam zien?
-	A. Luxemburg en België
-	B. Duitsland en België
+	A. Luxemburg en Belgi�
+	B. Duitsland en Belgi�
 	C. Duitsland en Frankrijk
 Hoe heet de culturele en culinaire ontdekkingstocht door Rotterdam?
 	A. Drive & Eat
@@ -192,7 +179,7 @@ Wat is de oudste brug van Rotterdam?
 A.	 De Willemsbrug
 B.	 De Koninginnebrug
 C.	 De van Briennenoordbrug
-Rotterdam word ook wel de …. Genoemd
+Rotterdam word ook wel de �. Genoemd
 A.	 stad der wonderen
 B.	 stad der steden
 C.	 Haven stad
@@ -230,7 +217,7 @@ Welk gebouw (gebouwd in 1957) stond symbool voor de wederopbouw van de stad?
 A.	De Bijenkorf
 B.	De Kubuswoningen
 C.	The red apple
-Wat is de officiële naam van de koopgoot?
+Wat is de offici�le naam van de koopgoot?
 A.	De ondergrondse winkelstraat
 B.	Beurstraverse
 C.	Gewoon de koopgoot
@@ -269,7 +256,7 @@ Welke manier van sport word het meest beoefend in Rotterdam?
 A.	Fitness
 B.	Voetbal
 C.	Basketbal
-Welke Olympiër groeide op in Rotterdam? 
+Welke Olympi�r groeide op in Rotterdam? 
 A.	Dorian van Rijsselberghe
 B.	Marhinde Verkerk
 C.	Edith Bosch
@@ -306,10 +293,7 @@ B.	1875
 C.	1900 
 """
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 #\simpele manier voor random getal ipv dice
 """import random
 def rollDice():
@@ -317,10 +301,7 @@ def rollDice():
     return roll
 """
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 class ConfigError(KeyError): pass
 class Config:
     """ A utility for configuration """
@@ -474,11 +455,7 @@ class Input:
                #Deze 3 klassen verkleinen -> (nodig voor user textinput)
 
 #textboxen voor aantalspelers
-<<<<<<< HEAD
-n1 = Input(maxlength=15, color=(0,0,0), prompt='')
-=======
 n1 = Input(maxlength=15, color=(0,0,0), prompt='typ: ')
->>>>>>> origin/master
 n2 = Input(maxlength=15, color=(0,0,0), prompt='')
 n3 = Input(maxlength=15, color=(0,0,0), prompt='')
 n4 = Input(maxlength=15, color=(0,0,0), prompt='')
@@ -523,32 +500,28 @@ text7 = font.render("Terug", True, WHITE)
 text8 = font.render("hier komt het spel", True, BLACK)
 text9 = fontlarge.render("The Euromast", True, BLUE)
 text10 = font.render("Vink minimaal twee spelers/PC's aan.", True, RED)
-text11 = font.render("Vink minimaal één speler aan.", True, RED)
+text11 = font.render("Vink minimaal ��n speler aan.", True, RED)
 text12 = fontsmall.render("Scores:", True, BLUE)
 text22 = fontsmall.render('Welke bar in Rotterdam werd in 2009 de beste bar ter wereld benoemd?', True, BLACK)
-text23 = fontsmall.render('A. De Witte Aap | B. Het NRC | C. Café de Beurs', True, BLACK)
+text23 = fontsmall.render('A. De Witte Aap | B. Het NRC | C. Caf� de Beurs', True, BLACK)
 text24 = fontsmall.render('Hoe heet de bekendste escape room in Rotterdam?', True, BLACK)
-text25 = fontsmall.render('A. R’dam Escape | B. Escape010 | C. Room Escape', True, BLACK)
+text25 = fontsmall.render('A. R�dam Escape | B. Escape010 | C. Room Escape', True, BLACK)
 text26 = fontsmall.render('Voor welk vervoermiddel is er geen tour door Rotterdam beschikbaar?', True, BLACK)
 text27 = fontsmall.render('A. Segway | B. Boot | C. Auto', True, BLACK)
 text28 = fontsmall.render('Welk van de volgende winkels is niet rond de koopgoot?', True, BLACK)
 text29 = fontsmall.render('A. H&M | B. Media Markt | C. The Sting', True, BLACK)
 text30 = fontsmall.render('In welke bioscoop vindt het Wildlife Film Festival plaats?', True, BLACK)
-text31 = fontsmall.render('A. Cinerama | B. Pathé de Kuip | C. Pathé Schouwburgplein', True, BLACK)
-text32 = fontsmall.render('Voor welk museum staat het monument van Zadkine genaamd “De Verwoest Stad”?', True, BLACK)
+text31 = fontsmall.render('A. Cinerama | B. Path� de Kuip | C. Path� Schouwburgplein', True, BLACK)
+text32 = fontsmall.render('Voor welk museum staat het monument van Zadkine genaamd �De Verwoest Stad�?', True, BLACK)
 text33 = fontsmall.render('	A. Havenmuseum | B. Mariniersmuseum | C. Maritiem museum', True, BLACK)
 text34 = fontsmall.render('Waar geeft de Rotterdam Tours onder andere rondleidingen?', True, BLACK)
 text35 = fontsmall.render('A. De Euromast | B. Museumplein | C. De Markthal', True, BLACK)
-text36 = fontsmall.render('Welke van de volgende Pathé bioscopen is niet in Rotterdam?', True, BLACK)
-text37 = fontsmall.render('A. Pathé de Kuip | B. Pathé de Kroon | C. Pathé Schouwburgplein', True, BLACK)
+text36 = fontsmall.render('Welke van de volgende Path� bioscopen is niet in Rotterdam?', True, BLACK)
+text37 = fontsmall.render('A. Path� de Kuip | B. Path� de Kroon | C. Path� Schouwburgplein', True, BLACK)
 text38 = fontsmall.render('Hoeveel bezoekers zijn er jaarlijks bij de Marathon Rotterdam?', True, BLACK)
 text39 = fontsmall.render('A. 925.000 bezoekers | B. 675.000 bezoekers | C. 830.000 bezoekers', True, BLACK)
 text40 = fontsmall.render('Waar kan je niet terecht om te gaan zwemmen?', True, BLACK)
 text41 = fontsmall.render('A. Hoek van Holland | B. Euromast Park | C. Plaswijckpark', True, BLACK)
-<<<<<<< HEAD
-text100 = font.render("Highscore", True, WHITE)
-=======
->>>>>>> origin/master
 #text13-16 zijn bezet
 #20 21 42 43 zijn bezet
 #begin values voor de start error
@@ -573,10 +546,6 @@ class bordspel:
         txtbx.draw(screen)
 
     def start():
-<<<<<<< HEAD
-        pygame.mixer.music.play(-1)
-=======
->>>>>>> origin/master
         screen.fill(WHITE)
         screen.blit(bg,(0,0)) #draw background image
         mx, my = pygame.mouse.get_pos()
@@ -592,21 +561,10 @@ class bordspel:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 350, 400, 50])
-<<<<<<< HEAD
-        if my > 450 and my < 500 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
-            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 450, 400, 50])
-        else:
-            pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 450, 400, 50])
-=======
->>>>>>> origin/master
         pygame.display.set_caption("The Euromast")
         screen.blit(text, [screenWidth/2 - 30, 157])
         screen.blit(text2, [screenWidth/2- 85, 257])
         screen.blit(text3, [screenWidth/2 - 25, 357])
-<<<<<<< HEAD
-        screen.blit(text100, [screenWidth/2 - 55 , 457])
-=======
->>>>>>> origin/master
         screen.blit(text9, [300, 20])
         #geef error als op start geklikt word
         if error10 == 1:
@@ -1152,11 +1110,7 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak4 = False
                                     while not klikbuitenvak4:
-<<<<<<< HEAD
-                                        clock.tick(30) #essentieel!
-=======
                                         clock.tick(10) #essentieel!
->>>>>>> origin/master
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
