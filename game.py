@@ -253,10 +253,7 @@ def rollDice():
     roll=int(random.randint(1,6))
     return roll
 """
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 class ConfigError(KeyError): pass
 class Config:
