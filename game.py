@@ -1,5 +1,5 @@
 from pygame.locals import *
-import pygame, string, random
+import pygame, string, random, psycopg2
 from math import pi
 pygame.init()
 
@@ -31,14 +31,64 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
+<<<<<<< HEAD
+=======
+#sounds
+pygame.mixer.music.load('got.mp3')
+
+>>>>>>> origin/master
+
+# Use the database
+def interact_with_database(command):
+    # Connect and set up cursor
+    connection = psycopg2.connect("dbname=pr2 user=postgres")
+    cursor = connection.cursor()
+    
+    # Execute the command
+    cursor.execute(command)
+    connection.commit()
+
+    # Save results
+    results = None
+    try:
+        results = cursor.fetchall()
+    except psycopg2.ProgrammingError:
+        # Nothing to fetch
+        pass
+
+    # Close connection
+    cursor.close()
+    connection.close()
+    
+    return results
+
+
+# Uploads a score into the hiscore table
+def upload_score(name, score):
+    interact_with_database("UPDATE score SET score = {} WHERE name = '{}'"
+                           .format(score, name))
+
+
+# Downloads score data from database
+def download_scores():
+    return interact_with_database("SELECT * FROM score")
+
+
+# Downloads the top score from database
+def download_top_score():
+    result = interact_with_database("SELECT * FROM score ORDER BY score")[0][1]
+    return result
+
 
 #alle vragen
 #entertainment categorie
+
 """
 Welke bar in Rotterdam werd in 2009 de beste bar ter wereld benoemd?
     A. De Witte Aap
     B. Het NRC
     C. Café de Beurs
+
 Hoe heet de bekendste escape room in Rotterdam?
 	A. R’dam Escape
 	B. Escape010
@@ -244,7 +294,17 @@ B.	1875
 C.	1900 
 """
 
+<<<<<<< HEAD
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+=======
+#\simpele manier voor random getal ipv dice
+"""import random
+def rollDice():
+    roll=int(random.randint(1,6))
+    return roll
+"""
+
+>>>>>>> origin/master
 class ConfigError(KeyError): pass
 class Config:
     """ A utility for configuration """
@@ -445,8 +505,28 @@ text9 = fontlarge.render("The Euromast", True, BLUE)
 text10 = font.render("Vink minimaal twee spelers/PC's aan.", True, RED)
 text11 = font.render("Vink minimaal één speler aan.", True, RED)
 text12 = fontsmall.render("Scores:", True, BLUE)
+text22 = fontsmall.render('Welke bar in Rotterdam werd in 2009 de beste bar ter wereld benoemd?', True, BLACK)
+text23 = fontsmall.render('A. De Witte Aap | B. Het NRC | C. Café de Beurs', True, BLACK)
+text24 = fontsmall.render('Hoe heet de bekendste escape room in Rotterdam?', True, BLACK)
+text25 = fontsmall.render('A. R’dam Escape | B. Escape010 | C. Room Escape', True, BLACK)
+text26 = fontsmall.render('Voor welk vervoermiddel is er geen tour door Rotterdam beschikbaar?', True, BLACK)
+text27 = fontsmall.render('A. Segway | B. Boot | C. Auto', True, BLACK)
+text28 = fontsmall.render('Welk van de volgende winkels is niet rond de koopgoot?', True, BLACK)
+text29 = fontsmall.render('A. H&M | B. Media Markt | C. The Sting', True, BLACK)
+text30 = fontsmall.render('In welke bioscoop vindt het Wildlife Film Festival plaats?', True, BLACK)
+text31 = fontsmall.render('A. Cinerama | B. Pathé de Kuip | C. Pathé Schouwburgplein', True, BLACK)
+text32 = fontsmall.render('Voor welk museum staat het monument van Zadkine genaamd “De Verwoest Stad”?', True, BLACK)
+text33 = fontsmall.render('	A. Havenmuseum | B. Mariniersmuseum | C. Maritiem museum', True, BLACK)
+text34 = fontsmall.render('Waar geeft de Rotterdam Tours onder andere rondleidingen?', True, BLACK)
+text35 = fontsmall.render('A. De Euromast | B. Museumplein | C. De Markthal', True, BLACK)
+text36 = fontsmall.render('Welke van de volgende Pathé bioscopen is niet in Rotterdam?', True, BLACK)
+text37 = fontsmall.render('A. Pathé de Kuip | B. Pathé de Kroon | C. Pathé Schouwburgplein', True, BLACK)
+text38 = fontsmall.render('Hoeveel bezoekers zijn er jaarlijks bij de Marathon Rotterdam?', True, BLACK)
+text39 = fontsmall.render('A. 925.000 bezoekers | B. 675.000 bezoekers | C. 830.000 bezoekers', True, BLACK)
+text40 = fontsmall.render('Waar kan je niet terecht om te gaan zwemmen?', True, BLACK)
+text41 = fontsmall.render('A. Hoek van Holland | B. Euromast Park | C. Plaswijckpark', True, BLACK)
 #text13-16 zijn bezet
-
+#20 21 42 43 zijn bezet
 #begin values voor de start error
 error10 = 0 
 error11 = 0
@@ -567,18 +647,190 @@ class bordspel:
             screen.blit(text15, [15, 59])
         if speler4knop == 1 or pc4knop == 1:
             screen.blit(text16, [15, 77])
-
-        aantal = speler1knop + speler2knop + speler3knop + speler4knop + pc1knop + pc2knop + pc3knop + pc4knop
+        text20 = font.render('Dobbelsteen = 1: ' + n1var, True, RED)
+        text21 = font.render( 'Dobbelsteen = 2: ' + n2var, True, BLUE)
+        text42 = font.render( 'Dobbelsteen = 3: ' + n3var, True, GREEN)
+        text43 = font.render('Dobbelsteen = 4: ' + n4var, True, GREY)
+        pygame.draw.rect(screen, GREY, [5, 120, 700, 150])
+        pygame.draw.rect(screen, WHITE, [5, 195, 700, 40])
+        pygame.display.update()
+        aantal = speler1knop + speler2knop + speler3knop + speler4knop + pc1knop + pc2knop + pc3knop + pc4knop #begin beurt
         randomdobbel = int(random.randint(1,aantal))
-        print(randomdobbel)
-        if randomdobbel == 1:
-            print(n1var)
-        if randomdobbel == 2:
-	        print(n2var)
-        if randomdobbel == 3:
-	        print(n3var)
-        if randomdobbel == 4:
-	        print(n4var)
+        vraagrandom = int(random.randint(1,10))
+        print(randomdobbel) 
+        print(vraagrandom)
+        if randomdobbel == 1: #eerste speler is random gekozen
+            screen.blit(text20,[10,120])
+            pygame.display.update()
+            if vraagrandom == 1:
+                screen.blit(text22,[10,150])
+                screen.blit(text23,[10,200])
+                pygame.display.update()
+            if vraagrandom == 2:
+                screen.blit(text24,[10,150])
+                screen.blit(text25,[10,200])
+                pygame.display.update()
+            if vraagrandom == 3:
+                screen.blit(text26,[10,150])
+                screen.blit(text27,[10,200])
+                pygame.display.update()
+            if vraagrandom == 4:
+                screen.blit(text28,[10,150])
+                screen.blit(text29,[10,200])
+                pygame.display.update()
+            if vraagrandom == 5:
+                screen.blit(text30,[10,150])
+                screen.blit(text31,[10,200])
+                pygame.display.update()
+            if vraagrandom == 6:
+                screen.blit(text32,[10,150])
+                screen.blit(text33,[10,200])
+                pygame.display.update()
+            if vraagrandom == 7:
+                screen.blit(text34,[10,150])
+                screen.blit(text35,[10,200])
+                pygame.display.update()
+            if vraagrandom == 8:
+                screen.blit(text36,[10,150])
+                screen.blit(text37,[10,200])
+                pygame.display.update()
+            if vraagrandom == 9:
+                screen.blit(text38,[10,150])
+                screen.blit(text39,[10,200])
+                pygame.display.update()
+            if vraagrandom == 10:
+                screen.blit(text40,[10,150])
+                screen.blit(text41,[10,200])
+                pygame.display.update()
+        if randomdobbel == 2: #tweede speler is random gekozen 
+            screen.blit(text21,[10,120])
+            pygame.display.update()
+            if vraagrandom == 1:
+                screen.blit(text22,[10,150])
+                screen.blit(text23,[10,200])
+                pygame.display.update() 
+            if vraagrandom == 2:
+                screen.blit(text24,[10,150])
+                screen.blit(text25,[10,200])
+                pygame.display.update()
+            if vraagrandom == 3:
+                screen.blit(text26,[10,150])
+                screen.blit(text27,[10,200])
+                pygame.display.update()
+            if vraagrandom == 4:
+                screen.blit(text28,[10,150])
+                screen.blit(text29,[10,200])
+                pygame.display.update()
+            if vraagrandom == 5:
+                screen.blit(text30,[10,150])
+                screen.blit(text31,[10,200])
+                pygame.display.update()
+            if vraagrandom == 6:
+                screen.blit(text32,[10,150])
+                screen.blit(text33,[10,200])
+                pygame.display.update()
+            if vraagrandom == 7:
+                screen.blit(text34,[10,150])
+                screen.blit(text35,[10,200])
+                pygame.display.update()
+            if vraagrandom == 8:
+                screen.blit(text36,[10,150])
+                screen.blit(text37,[10,200])
+                pygame.display.update()
+            if vraagrandom == 9:
+                screen.blit(text38,[10,150])
+                screen.blit(text39,[10,200])
+                pygame.display.update()
+            if vraagrandom == 10:
+                screen.blit(text40,[10,150])
+                screen.blit(text41,[10,200])
+                pygame.display.update()
+        if randomdobbel == 3: #derde speler is random gekozen
+            screen.blit(text42,[10,120])
+            pygame.display.update()
+            if vraagrandom == 1:
+                screen.blit(text22,[10,150])
+                screen.blit(text23,[10,200])
+                pygame.display.update()
+            if vraagrandom == 2:
+                screen.blit(text24,[10,150])
+                screen.blit(text25,[10,200])
+                pygame.display.update()
+            if vraagrandom == 3:
+                screen.blit(text26,[10,150])
+                screen.blit(text27,[10,200])
+                pygame.display.update()
+            if vraagrandom == 4:
+                screen.blit(text28,[10,150])
+                screen.blit(text29,[10,200])
+                pygame.display.update()
+            if vraagrandom == 5:
+                screen.blit(text30,[10,150])
+                screen.blit(text31,[10,200])
+                pygame.display.update()
+            if vraagrandom == 6:
+                screen.blit(text32,[10,150])
+                screen.blit(text33,[10,200])
+                pygame.display.update()
+            if vraagrandom == 7:
+                screen.blit(text34,[10,150])
+                screen.blit(text35,[10,200])
+                pygame.display.update()
+            if vraagrandom == 8:
+                screen.blit(text36,[10,150])
+                screen.blit(text37,[10,200])
+                pygame.display.update()
+            if vraagrandom == 9:
+                screen.blit(text38,[10,150])
+                screen.blit(text39,[10,200])
+                pygame.display.update()
+            if vraagrandom == 10:
+                screen.blit(text40,[10,150])
+                screen.blit(text41,[10,200])
+                pygame.display.update()
+        if randomdobbel == 4: #vierde speler is random gekozen
+            screen.blit(text43,[10,120])
+            pygame.display.update()
+            if vraagrandom == 1:
+                screen.blit(text22,[10,150])
+                screen.blit(text23,[10,200])
+                pygame.display.update()
+            if vraagrandom == 2:
+                screen.blit(text24,[10,150])
+                screen.blit(text25,[10,200])
+                pygame.display.update()
+            if vraagrandom == 3:
+                screen.blit(text26,[10,150])
+                screen.blit(text27,[10,200])
+                pygame.display.update()
+            if vraagrandom == 4:
+                screen.blit(text28,[10,150])
+                screen.blit(text29,[10,200])
+                pygame.display.update()
+            if vraagrandom == 5:
+                screen.blit(text30,[10,150])
+                screen.blit(text31,[10,200])
+                pygame.display.update()
+            if vraagrandom == 6:
+                screen.blit(text32,[10,150])
+                screen.blit(text33,[10,200])
+                pygame.display.update()
+            if vraagrandom == 7:
+                screen.blit(text34,[10,150])
+                screen.blit(text35,[10,200])
+                pygame.display.update()
+            if vraagrandom == 8:
+                screen.blit(text36,[10,150])
+                screen.blit(text37,[10,200])
+                pygame.display.update()
+            if vraagrandom == 9:
+                screen.blit(text38,[10,150])
+                screen.blit(text39,[10,200])
+                pygame.display.update()
+            if vraagrandom == 10:
+                screen.blit(text40,[10,150])
+                screen.blit(text41,[10,200])
+                pygame.display.update()
 
 
 
