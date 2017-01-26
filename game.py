@@ -2,22 +2,16 @@ from pygame.locals import *
 import pygame, string, random, psycopg2
 from math import pi
 pygame.init()
-<<<<<<< HEAD
 
-=======
-#vraag
->>>>>>> origin/master
 # Background image is set as 'bg'
 bg = pygame.image.load("FOTO achtergrond.png")
 vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
 arrow = pygame.image.load("FOTO arrow.png")
 speelbord_bg = pygame.image.load("FOTO speelbord.png")
-<<<<<<< HEAD
-=======
+
 #sounds
 pygame.mixer.music.load('got.mp3')
->>>>>>> origin/master
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -38,18 +32,9 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 #sounds
 pygame.mixer.music.load('got.mp3')
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 # Use the database
 def interact_with_database(command):
     # Connect and set up cursor
@@ -306,10 +291,7 @@ B.	1875
 C.	1900 
 """
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 #\simpele manier voor random getal ipv dice
 """import random
 def rollDice():
@@ -317,10 +299,6 @@ def rollDice():
     return roll
 """
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 class ConfigError(KeyError): pass
 class Config:
     """ A utility for configuration """
@@ -474,11 +452,8 @@ class Input:
                #Deze 3 klassen verkleinen -> (nodig voor user textinput)
 
 #textboxen voor aantalspelers
-<<<<<<< HEAD
 n1 = Input(maxlength=15, color=(0,0,0), prompt='')
-=======
 n1 = Input(maxlength=15, color=(0,0,0), prompt='typ: ')
->>>>>>> origin/master
 n2 = Input(maxlength=15, color=(0,0,0), prompt='')
 n3 = Input(maxlength=15, color=(0,0,0), prompt='')
 n4 = Input(maxlength=15, color=(0,0,0), prompt='')
@@ -545,10 +520,7 @@ text38 = fontsmall.render('Hoeveel bezoekers zijn er jaarlijks bij de Marathon R
 text39 = fontsmall.render('A. 925.000 bezoekers | B. 675.000 bezoekers | C. 830.000 bezoekers', True, BLACK)
 text40 = fontsmall.render('Waar kan je niet terecht om te gaan zwemmen?', True, BLACK)
 text41 = fontsmall.render('A. Hoek van Holland | B. Euromast Park | C. Plaswijckpark', True, BLACK)
-<<<<<<< HEAD
 text100 = font.render("Highscore", True, WHITE)
-=======
->>>>>>> origin/master
 #text13-16 zijn bezet
 #20 21 42 43 zijn bezet
 #begin values voor de start error
@@ -573,10 +545,7 @@ class bordspel:
         txtbx.draw(screen)
 
     def start():
-<<<<<<< HEAD
         pygame.mixer.music.play(-1)
-=======
->>>>>>> origin/master
         screen.fill(WHITE)
         screen.blit(bg,(0,0)) #draw background image
         mx, my = pygame.mouse.get_pos()
@@ -592,21 +561,15 @@ class bordspel:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 350, 400, 50])
-<<<<<<< HEAD
         if my > 450 and my < 500 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 450, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 450, 400, 50])
-=======
->>>>>>> origin/master
         pygame.display.set_caption("The Euromast")
         screen.blit(text, [screenWidth/2 - 30, 157])
         screen.blit(text2, [screenWidth/2- 85, 257])
         screen.blit(text3, [screenWidth/2 - 25, 357])
-<<<<<<< HEAD
         screen.blit(text100, [screenWidth/2 - 55 , 457])
-=======
->>>>>>> origin/master
         screen.blit(text9, [300, 20])
         #geef error als op start geklikt word
         if error10 == 1:
@@ -1152,11 +1115,8 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak4 = False
                                     while not klikbuitenvak4:
-<<<<<<< HEAD
                                         clock.tick(30) #essentieel!
-=======
                                         clock.tick(10) #essentieel!
->>>>>>> origin/master
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
