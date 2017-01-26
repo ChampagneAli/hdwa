@@ -1,5 +1,5 @@
 from pygame.locals import *
-import pygame, string, random
+import pygame, string, random, psycopg2
 from math import pi
 pygame.init()
 
@@ -9,6 +9,8 @@ vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
 arrow = pygame.image.load("FOTO arrow.png")
 speelbord_bg = pygame.image.load("FOTO speelbord.png")
+#sounds
+pygame.mixer.music.load('got.mp3')
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -29,8 +31,52 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
+
 #sounds
 pygame.mixer.music.load('got.mp3')
+
+
+
+# Use the database
+def interact_with_database(command):
+    # Connect and set up cursor
+    connection = psycopg2.connect("dbname=pr2 user=postgres")
+    cursor = connection.cursor()
+    
+    # Execute the command
+    cursor.execute(command)
+    connection.commit()
+
+    # Save results
+    results = None
+    try:
+        results = cursor.fetchall()
+    except psycopg2.ProgrammingError:
+        # Nothing to fetch
+        pass
+
+    # Close connection
+    cursor.close()
+    connection.close()
+    
+    return results
+
+
+# Uploads a score into the hiscore table
+def upload_score(name, score):
+    interact_with_database("UPDATE score SET score = {} WHERE name = '{}'"
+                           .format(score, name))
+
+
+# Downloads score data from database
+def download_scores():
+    return interact_with_database("SELECT * FROM score")
+
+
+# Downloads the top score from database
+def download_top_score():
+    result = interact_with_database("SELECT * FROM score ORDER BY score")[0][1]
+    return result
 
 
 #alle vragen
@@ -247,6 +293,7 @@ B.	1875
 C.	1900 
 """
 
+
 #\simpele manier voor random getal ipv dice
 """import random
 def rollDice():
@@ -254,7 +301,7 @@ def rollDice():
     return roll
 """
 
-               #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 class ConfigError(KeyError): pass
 class Config:
     """ A utility for configuration """
@@ -408,7 +455,7 @@ class Input:
                #Deze 3 klassen verkleinen -> (nodig voor user textinput)
 
 #textboxen voor aantalspelers
-n1 = Input(maxlength=15, color=(0,0,0), prompt='')
+n1 = Input(maxlength=15, color=(0,0,0), prompt='typ: ')
 n2 = Input(maxlength=15, color=(0,0,0), prompt='')
 n3 = Input(maxlength=15, color=(0,0,0), prompt='')
 n4 = Input(maxlength=15, color=(0,0,0), prompt='')
@@ -499,7 +546,6 @@ class bordspel:
         txtbx.draw(screen)
 
     def start():
-        pygame.mixer.music.play(-1)
         screen.fill(WHITE)
         screen.blit(bg,(0,0)) #draw background image
         mx, my = pygame.mouse.get_pos()
@@ -1064,7 +1110,7 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak4 = False
                                     while not klikbuitenvak4:
-                                        clock.tick(30) #essentieel!
+                                        clock.tick(10) #essentieel!
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
