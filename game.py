@@ -9,6 +9,8 @@ vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
 arrow = pygame.image.load("FOTO arrow.png")
 speelbord_bg = pygame.image.load("FOTO speelbord.png")
+#sounds
+pygame.mixer.music.load('got.mp3')
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -28,11 +30,6 @@ pc1knop = 0
 pc2knop = 0
 pc3knop = 0
 pc4knop = 0
-
-<<<<<<< HEAD
-=======
-#sounds
-pygame.mixer.music.load('got.mp3')
 
 
 #alle vragen
@@ -247,13 +244,6 @@ B.	1875
 C.	1900 
 """
 
-#\simpele manier voor random getal ipv dice
-"""import random
-def rollDice():
-    roll=int(random.randint(1,6))
-    return roll
-"""
->>>>>>> origin/master
                #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 class ConfigError(KeyError): pass
 class Config:
@@ -408,7 +398,7 @@ class Input:
                #Deze 3 klassen verkleinen -> (nodig voor user textinput)
 
 #textboxen voor aantalspelers
-n1 = Input(maxlength=15, color=(0,0,0), prompt='')
+n1 = Input(maxlength=15, color=(0,0,0), prompt='typ: ')
 n2 = Input(maxlength=15, color=(0,0,0), prompt='')
 n3 = Input(maxlength=15, color=(0,0,0), prompt='')
 n4 = Input(maxlength=15, color=(0,0,0), prompt='')
@@ -479,7 +469,6 @@ class bordspel:
         txtbx.draw(screen)
 
     def start():
-        pygame.mixer.music.play(-1)
         screen.fill(WHITE)
         screen.blit(bg,(0,0)) #draw background image
         mx, my = pygame.mouse.get_pos()
@@ -562,11 +551,8 @@ class bordspel:
     def spel():
         pygame.mixer.music.play(-1)
         screen.blit(speelbord_bg,(0,0)) #draw background image
-<<<<<<< HEAD
         pygame.display.set_caption("The Euromast - Start!")
-=======
 
->>>>>>> origin/master
         #scores
         text13 = fontsmall.render(n1var + ": " + str(n1score), True, BLUE)
         text14 = fontsmall.render(n2var + ": " + str(n2score), True, BLUE)
@@ -803,7 +789,7 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak1 = False
                                     while not klikbuitenvak1:
-                                        clock.tick(30) #essentieel!
+                                        clock.tick(10) #essentieel!
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
@@ -827,7 +813,7 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak2 = False
                                     while not klikbuitenvak2:
-                                        clock.tick(30) #essentieel!
+                                        clock.tick(10) #essentieel!
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
@@ -851,7 +837,7 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak3 = False
                                     while not klikbuitenvak3:
-                                        clock.tick(30) #essentieel!
+                                        clock.tick(10) #essentieel!
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
@@ -875,7 +861,7 @@ while not done:
                                     #een while loop voor tekst schrijven
                                     klikbuitenvak4 = False
                                     while not klikbuitenvak4:
-                                        clock.tick(30) #essentieel!
+                                        clock.tick(10) #essentieel!
                                         events = pygame.event.get()
                                         #op kruisje kunnen klikken
                                         for event in events:
