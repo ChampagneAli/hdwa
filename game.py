@@ -2,7 +2,7 @@ from pygame.locals import *
 import pygame, string, random, psycopg2
 from math import pi
 pygame.init()
-
+#vraag
 # Background image is set as 'bg'
 bg = pygame.image.load("FOTO achtergrond.png")
 vink = pygame.image.load("FOTO groen vinkje.png")
