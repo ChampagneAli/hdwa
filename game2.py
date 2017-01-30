@@ -12,6 +12,7 @@ speelbord_bg = pygame.image.load("FOTO speelbord.png")
 correct = pygame.image.load("FOTO correct.png")
 correct_verder = pygame.image.load("FOTO correct_verder.png")
 incorrect = pygame.image.load("FOTO incorrect.png")
+page1 = pygame.image.load("page1.jpg")
 #sounds
 #pygame.mixer.music.load('got.mp3')
 
@@ -542,6 +543,8 @@ text31_b = fontsmall.render('| B. Euromast Park', True, BLACK)
 text31_c = fontsmall.render('| C. Plaswijckpark', True, BLACK)
 #text13-16 zijn bezet
 #20 21 42 43 zijn bezet
+text101 = font.render("Handleiding", True, WHITE)
+text108 = font.render("Next", True, WHITE)
 #begin values voor de start error
 error10 = 0 
 error11 = 0
@@ -608,11 +611,16 @@ class bordspel:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 350, 400, 50])
+        if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 550, 400, 50])
+        else:
+            pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 550, 400, 50])
         pygame.display.set_caption("The Euromast")
         screen.blit(text, [screenWidth/2 - 30, 157])
         screen.blit(text2, [screenWidth/2- 85, 257])
         screen.blit(text3, [screenWidth/2 - 25, 357])
         screen.blit(text9, [300, 20])
+        screen.blit(text101, [screenWidth/2 - 75, 557])
         #geef error als op start geklikt word
         if error10 == 1:
             screen.blit(text10, [15, 95]) #start-error
@@ -620,6 +628,15 @@ class bordspel:
         if error11 == 1:
             screen.blit(text11, [20, 100]) #start-error
             screen.blit(arrow,(0,0))
+    def handleiding():
+        screen.blit(page1,(0,0))
+
+        #terug knop
+        pygame.draw.rect(screen, BLUE, [screenWidth/2 - 440, 530, 90, 40])
+        screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800]) 
+        #next knop
+        pygame.draw.rect(screen, BLUE, [800, 530, 90, 40])
+        screen.blit(text108, [810, 538, 90, 800]) 
         
     def aantalspelers():
         screen.blit(bg,(0,0)) #draw background image
@@ -781,6 +798,22 @@ while not done:
     (left_mouse, middle_mouse, right_mouse) = pygame.mouse.get_pressed() #user input on the mouse (boolean int)
     if left_mouse == 1:
             mx, my = pygame.mouse.get_pos()
+            if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+                bordspel.handleiding()
+                pygame.display.update()
+                sub2done = False
+                while not sub2done:
+                    for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                            if event.button == 1: # 1links 2midden 3rechts 4scrollup 5scrolldown
+                                mx, my = pygame.mouse.get_pos()
+                                if 530 < my < 570 and screenWidth/2 - 350 > mx > screenWidth/2 - 440: #'aantalspelers'\'terug'
+                                    bordspel.start()                   
+                                    pygame.display.update()
+                                    sub2done = True
+                                              
+                        if event.type == pygame.QUIT:
+                            quit()
             if 150 < my < 200 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'start'
                 if speler1knop + speler2knop + speler3knop + speler4knop + pc1knop + pc2knop + pc3knop + pc4knop < 2:
                     error10 = 1
@@ -865,6 +898,7 @@ while not done:
                         for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
                             if event.type == pygame.QUIT:
                                 done = True
+             
             if 250 < my < 300 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'aantal spelers'
                 error10 = 0
                 error11 = 0
