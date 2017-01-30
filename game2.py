@@ -68,8 +68,8 @@ def interact_with_database(command):
 
 
     # Uploads a score into the hiscore table
-    #def upload_score(name, score):
-    #    interact_with_database("UPDATE score SET score = score WHERE name = name".format(score, name))
+    def upload_score(name, score):
+        interact_with_database("UPDATE test SET score = score WHERE name = name".format(name, score))
 
 
 # Downloads score data from database
@@ -78,16 +78,15 @@ def download_scores():
 
 
 # Downloads the top score from database
-#def download_top_score():
-    #  result = interact_with_database("SELECT * FROM score ORDER BY highscore")[0][1]
-    #  return result
-#upload_score(str(input("Score: ")), str(input("Name: ")))
-#print (results)
+def download_top_score():
+      result = interact_with_database("SELECT * FROM test ORDER BY score")[0][1]
+      return result
+      upload_score(str(input("Name: ")), str(input("Score: ")))
+      print (results)
 
 
 #alle vragen
-#entertainment categorie
-
+#entertainment
 """
 Welke bar in Rotterdam werd in 2009 de beste bar ter wereld benoemd?
     A. De Witte Aap
