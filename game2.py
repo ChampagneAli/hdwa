@@ -1,6 +1,5 @@
 from pygame.locals import *
 import pygame, string, random, psycopg2
-from test import *
 from math import pi
 pygame.init()
 
@@ -16,7 +15,7 @@ incorrect = pygame.image.load("FOTO incorrect.png")
 page1 = pygame.image.load("page1.jpg")
 
 #sounds
-pygame.mixer.music.load('got.mp3')
+#pygame.mixer.music.load('got.mp3')
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -61,13 +60,17 @@ def interact_with_database(command):
     connection.close()
     
     return results
+
+
     # Uploads a score into the hiscore table
     #def upload_score(name, score):
     #    interact_with_database("UPDATE score SET score = score WHERE name = name".format(score, name))
 
+
 # Downloads score data from database
 def download_scores():
     return interact_with_database("SELECT * FROM test")
+
 
 # Downloads the top score from database
 #def download_top_score():
@@ -75,6 +78,7 @@ def download_scores():
     #  return result
 #upload_score(str(input("Score: ")), str(input("Name: ")))
 #print (results)
+
 
 #alle vragen
 #entertainment categorie
@@ -621,14 +625,13 @@ class bordspel:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 550, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 550, 400, 50])
-
         pygame.display.set_caption("The Euromast")
         screen.blit(text, [screenWidth/2 - 30, 157])
         screen.blit(text2, [screenWidth/2- 85, 257])
-        screen.blit(text3, [screenWidth/2 - 25, 357])
+        screen.blit(text3, [screenWidth/2 - 25, 557])
         screen.blit(text9, [300, 20])
         screen.blit(text100, [screenWidth/2 - 55 , 457])
-        screen.blit(text101, [screenWidth/2 - 75, 557])
+        screen.blit(text101, [screenWidth/2 - 68, 357])
         #geef error als op start geklikt word
         if error10 == 1:
             screen.blit(text10, [15, 95]) #start-error
@@ -636,6 +639,7 @@ class bordspel:
         if error11 == 1:
             screen.blit(text11, [20, 100]) #start-error
             screen.blit(arrow,(0,0))
+
     def handleiding():
         screen.blit(page1,(0,0))
 
@@ -644,7 +648,7 @@ class bordspel:
         screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800]) 
         #next knop
         pygame.draw.rect(screen, BLUE, [800, 530, 90, 40])
-        screen.blit(text108, [810, 538, 90, 800]) 
+        screen.blit(text108, [816, 532, 90, 800]) 
         
     def aantalspelers():
         screen.blit(bg,(0,0)) #draw background image
@@ -814,7 +818,7 @@ while not done:
     (left_mouse, middle_mouse, right_mouse) = pygame.mouse.get_pressed() #user input on the mouse (boolean int)
     if left_mouse == 1:
             mx, my = pygame.mouse.get_pos()
-            if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+            if 350 < my < 400 and screenWidth/2 + 200 > mx > screenWidth/2 - 200:
                 bordspel.handleiding()
                 pygame.display.update()
                 sub2done = False
@@ -924,7 +928,7 @@ while not done:
                         for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
                             if event.type == pygame.QUIT:
                                 done = True  
-           
+
             if 250 < my < 300 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'aantal spelers'
                 error10 = 0
                 error11 = 0
@@ -1190,7 +1194,7 @@ while not done:
                             quit() 
                             #('subdone' en 'done' True geven om beiden loops af te sluiten kan ook)
                             
-            if 350 < my < 400 and screenWidth/2 + 200 > mx > screenWidth/2 - 200:  #'exit'
+            if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:  #'exit'
                 pygame.quit()
                 quit()
             
