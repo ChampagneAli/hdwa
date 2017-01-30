@@ -9,8 +9,11 @@ vink = pygame.image.load("FOTO groen vinkje.png")
 kruis = pygame.image.load("FOTO rood kruisje.png")
 arrow = pygame.image.load("FOTO arrow.png")
 speelbord_bg = pygame.image.load("FOTO speelbord.png")
+correct = pygame.image.load("FOTO correct.png")
+correct_verder = pygame.image.load("FOTO correct_verder.png")
+incorrect = pygame.image.load("FOTO incorrect.png")
 #sounds
-pygame.mixer.music.load('got.mp3')
+#pygame.mixer.music.load('got.mp3')
 
 # Define the colors we will use in RGB format
 BLACK = (  0,   0,   0)
@@ -30,12 +33,6 @@ pc1knop = 0
 pc2knop = 0
 pc3knop = 0
 pc4knop = 0
-
-
-#sounds
-pygame.mixer.music.load('got.mp3')
-
-
 
 # Use the database
 def interact_with_database(command):
@@ -556,25 +553,31 @@ class bordspel:
     def vraag(ant_a, ant_b, ant_c):
         beantwoord = False
         while not beantwoord:
+            goed = 0
             mx, my = pygame.mouse.get_pos()
             if 195 < my < 235 and 5 < mx < 238: #antwoord a
                 if ant_a == 1:
-                    print('goed antwoord')
+                    screen.blit(correct,(0,0))
+                    goed = 1
                 if ant_a == 0:
-                    print('fout antwoord')
+                    screen.blit(incorrect,(0,0))
                 beantwoord = True
             if 195 < my < 235 and 238 < mx < 472: #antwoord b
                 if ant_b == 1:
-                    print('goed antwoord')
+                    screen.blit(correct,(0,0))
+                    goed = 1
                 if ant_b == 0:
-                    print('fout antwoord')
+                    screen.blit(incorrect,(0,0))
                 beantwoord = True
             if 195 < my < 235 and 472 < mx < 705: #antwoord c
                 if ant_c == 1:
-                    print('goed antwoord')
+                    screen.blit(correct,(0,0))
+                    goed = 1
                 if ant_c == 0:
-                    print('fout antwoord')
+                    screen.blit(incorrect,(0,0))
                 beantwoord = True
+            pygame.display.update()
+            return(goed)
 
     def naam(txtbx):
         bordspel.aantalspelers()
@@ -670,7 +673,7 @@ class bordspel:
         pygame.display.set_caption("The Euromast - Aantal Spelers")
 
     def spel():
-        pygame.mixer.music.play(-1)
+        #pygame.mixer.music.play(-1)
         screen.blit(speelbord_bg,(0,0)) #draw background image
         pygame.display.set_caption("The Euromast - Start!")
 
@@ -691,14 +694,14 @@ class bordspel:
         text20 = font.render('Dobbelsteen = 1: ' + n1var, True, RED)
         text21 = font.render( 'Dobbelsteen = 2: ' + n2var, True, BLUE)
         text42 = font.render( 'Dobbelsteen = 3: ' + n3var, True, GREEN)
-        text43 = font.render('Dobbelsteen = 4: ' + n4var, True, GREY)
+        text43 = font.render('Dobbelsteen = 4: ' + n4var, True, WHITE)
         pygame.draw.rect(screen, GREY, [5, 120, 700, 150])
         pygame.draw.rect(screen, WHITE, [5, 195, 700, 40])
         pygame.display.update()
         aantal = speler1knop + speler2knop + speler3knop + speler4knop + pc1knop + pc2knop + pc3knop + pc4knop #begin beurt
         randomdobbel = int(random.randint(1,aantal))
         vraagrandom = int(random.randint(1,10))
-        print('randomdobbel: ' + str(randomdobbel) + ' & vraagrandom: ' + str(vraagrandom))
+        print('vraagrandom: ' + str(vraagrandom))
         if randomdobbel == 1: #eerste speler is random gekozen
             screen.blit(text20,[10,120])
         elif randomdobbel == 2: #tweede speler is random gekozen 
@@ -802,17 +805,55 @@ while not done:
                             while not beantwoord:
                                 for event in pygame.event.get():
                                     if event.type == pygame.MOUSEBUTTONDOWN:
-                                        if vraagrandom == 1 or vraagrandom == 2 or vraagrandom == 3 or vraagrandom == 4:
-                                            bordspel.vraag(1,0,0)
-                                            beantwoord = True
-                                        elif vraagrandom == 5 or vraagrandom == 6 or vraagrandom == 7:
-                                            bordspel.vraag(0,1,0)
-                                            beantwoord = True
-                                        elif vraagrandom == 8 or vraagrandom == 9 or vraagrandom == 10:
-                                            bordspel.vraag(0,0,1)
-                                            beantwoord = True
-                                        pygame.display.update()
-                                    
+                                        mx, my = pygame.mouse.get_pos()
+                                        if 195 < my < 235 and 5 < mx < 705:
+                                            if vraagrandom == 1 or vraagrandom == 5 or vraagrandom == 9:
+                                                goed = bordspel.vraag(1,0,0)
+                                                beantwoord = True
+                                            if vraagrandom == 2 or vraagrandom == 4 or vraagrandom == 8 or vraagrandom == 10:
+                                                goed = bordspel.vraag(0,1,0)
+                                                beantwoord = True
+                                            if vraagrandom == 3 or vraagrandom == 6 or vraagrandom == 7:
+                                                goed = bordspel.vraag(0,0,1)
+                                                beantwoord = True
+                                            
+                                            if goed == 1:
+                                                pijltje = False
+                                                while not pijltje:
+                                                    for event in pygame.event.get():
+                                                        if event.type == KEYUP:
+                                                            #poppetje omhoog laten klimmen
+                                                            screen.blit(correct_verder,(0,0))
+                                                            pijltje = True
+                                                            
+                                                        if event.type == K_LEFT:
+                                                            #poppetje omhoog en links laten klimmen
+                                                            screen.blit(correct_verder,(0,0))
+                                                            pijltje = True
+
+                                                        if event.type == K_RIGHT:
+                                                            #poppetje omhoog en rechts laten klimmen
+                                                            screen.blit(correct_verder,(0,0))
+                                                            pijltje = True
+                                                        pygame.display.update()
+                                                        if event.type == pygame.QUIT:
+                                                            quit()
+
+                                            verdergeklikt = False
+                                            while not verdergeklikt:
+                                                for event in pygame.event.get():
+                                                    if event.type == pygame.MOUSEBUTTONDOWN:
+                                                        mx, my = pygame.mouse.get_pos()
+                                                        print(event)
+                                                        if 507 < my < 555 and 55 < mx < 192:
+                                                            verdergeklikt = True
+                                                            beurtvoorbij = True
+                                                    if event.type == pygame.QUIT:
+                                                        quit()
+
+                                            
+                                    if event.type == pygame.QUIT:
+                                        quit()
                             
                     done = False
                     while not done:
