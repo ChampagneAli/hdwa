@@ -13,6 +13,9 @@ correct = pygame.image.load("FOTO correct.png")
 correct_verder = pygame.image.load("FOTO correct_verder.png")
 incorrect = pygame.image.load("FOTO incorrect.png")
 page1 = pygame.image.load("page1.jpg")
+page2 = pygame.image.load("page2.jpg")
+page3 = pygame.image.load("page3.jpg")
+page4 = pygame.image.load("page4.jpg")
 #sounds
 #pygame.mixer.music.load('got.mp3')
 
@@ -629,7 +632,7 @@ class bordspel:
             screen.blit(text11, [20, 100]) #start-error
             screen.blit(arrow,(0,0))
     def handleiding():
-        screen.blit(page1,(0,0))
+        
 
         #terug knop
         pygame.draw.rect(screen, BLUE, [screenWidth/2 - 440, 530, 90, 40])
@@ -781,7 +784,7 @@ class bordspel:
         return vraagrandom
 
 
-
+counter = 1
 
                                                                       #THE MAIN WHILE LOOP 
 done = False
@@ -799,6 +802,7 @@ while not done:
     if left_mouse == 1:
             mx, my = pygame.mouse.get_pos()
             if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+                screen.blit(page1,(0,0))
                 bordspel.handleiding()
                 pygame.display.update()
                 sub2done = False
@@ -807,8 +811,26 @@ while not done:
                         if event.type == pygame.MOUSEBUTTONDOWN:
                             if event.button == 1: # 1links 2midden 3rechts 4scrollup 5scrolldown
                                 mx, my = pygame.mouse.get_pos()
-                                if 530 < my < 570 and screenWidth/2 - 350 > mx > screenWidth/2 - 440: #'aantalspelers'\'terug'
-                                    bordspel.start()                   
+                                if 530 < my < 570 and 800 < mx < 890: #next
+                                    print(counter)
+                                    counter = counter + 1
+                                    if counter == 2:
+                                        screen.blit(page2,(0,0))
+                                        bordspel.handleiding()
+                                    if counter == 3:
+                                        screen.blit(page3,(0,0))
+                                        bordspel.handleiding()
+                                    if counter == 4:
+                                        screen.blit(page4,(0,0))
+                                        bordspel.handleiding()
+                                    if counter == 5:
+                                        screen.blit(page1,(0,0))
+                                        counter = 1
+                                        bordspel.handleiding()
+                                    pygame.display.update()
+                                if 530 < my < 570 and screenWidth/2 - 350 > mx > screenWidth/2 - 440: #terug'
+                                    bordspel.start() 
+                                    pygame.draw.rect(screen, BLUE, [screenWidth/2 - 440, 530, 90, 40])               
                                     pygame.display.update()
                                     sub2done = True
                                               
