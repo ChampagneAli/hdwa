@@ -13,11 +13,10 @@ speelbord_bg = pygame.image.load("FOTO speelbord.png")
 correct = pygame.image.load("FOTO correct.png")
 correct_verder = pygame.image.load("FOTO correct_verder.png")
 incorrect = pygame.image.load("FOTO incorrect.png")
-page1 = pygame.image.load("page1.jpg")
-
-page2 = pygame.image.load("page2.jpg")
-page3 = pygame.image.load("page3.jpg")
-page4 = pygame.image.load("page4.jpg")
+page1 = pygame.image.load("page1.png")
+page2 = pygame.image.load("page2.png")
+page3 = pygame.image.load("page3.png")
+page4 = pygame.image.load("page4.png")
 
 #sounds
 #pygame.mixer.music.load('got.mp3')
