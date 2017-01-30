@@ -14,13 +14,11 @@ correct = pygame.image.load("FOTO correct.png")
 correct_verder = pygame.image.load("FOTO correct_verder.png")
 incorrect = pygame.image.load("FOTO incorrect.png")
 page1 = pygame.image.load("page1.jpg")
-<<<<<<< HEAD
+
 page2 = pygame.image.load("page2.jpg")
 page3 = pygame.image.load("page3.jpg")
 page4 = pygame.image.load("page4.jpg")
-=======
 
->>>>>>> origin/master
 #sounds
 #pygame.mixer.music.load('got.mp3')
 
@@ -825,12 +823,12 @@ while not done:
     (left_mouse, middle_mouse, right_mouse) = pygame.mouse.get_pressed() #user input on the mouse (boolean int)
     if left_mouse == 1:
             mx, my = pygame.mouse.get_pos()
-<<<<<<< HEAD
+
             if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
                 screen.blit(page1,(0,0))
-=======
+
             if 350 < my < 400 and screenWidth/2 + 200 > mx > screenWidth/2 - 200:
->>>>>>> origin/master
+                screen.blit(page1,(0,0))
                 bordspel.handleiding()
                 pygame.display.update()
                 sub2done = False
