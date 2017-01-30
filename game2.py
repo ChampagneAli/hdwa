@@ -1191,6 +1191,7 @@ while not done:
                             #('subdone' en 'done' True geven om beiden loops af te sluiten kan ook)
                             
             if 350 < my < 400 and screenWidth/2 + 200 > mx > screenWidth/2 - 200:  #'exit'
+                pygame.quit()
                 quit()
             
             
