@@ -37,45 +37,6 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
-#database
-def interact_with_database(command):
-    # Connect and set up cursor
-    connection = psycopg2.connect("dbname=pr2 user=Ali password=0000")
-    cursor = connection.cursor()
-    
-    # Execute the command
-    cursor.execute(command)
-    connection.commit()
-
-    # Save results
-    results = None
-    try:
-        results = cursor.fetchall()
-    except psycopg2.ProgrammingError:
-        #Nothing to fetch
-        pass
-
-    print(results)
-    # Close connection
-    cursor.close()
-    connection.close()
-    
-    return results
-    # Uploads a score into the hiscore table
-    #def upload_score(name, score):
-    #    interact_with_database("UPDATE score SET score = score WHERE name = name".format(score, name))
-
-# Downloads score data from database
-def download_scores():
-    return interact_with_database("SELECT * FROM test")
-
-# Downloads the top score from database
-#def download_top_score():
-    #  result = interact_with_database("SELECT * FROM score ORDER BY highscore")[0][1]
-    #  return result
-#upload_score(str(input("Score: ")), str(input("Name: ")))
-#print (results)
-
 #alle vragen
 #entertainment categorie
 
@@ -475,6 +436,9 @@ n2var = 'Geen naam'
 n3var = 'Geen naam'
 n4var = 'Geen naam'
 
+#lol
+x = bordspel.highscore.download_scores()
+
 # Set the height and width of the screen
 screenWidth = 1000
 screenHeight = 600
@@ -550,6 +514,8 @@ text108 = font.render("Next", True, WHITE)
 #begin values voor de start error
 error10 = 0 
 error11 = 0
+#database
+text999 = fontsmall.render(str(x), True, WHITE)
 
 
                                                                       #DEFINED SCREENS AND FUNCTIONS
@@ -638,7 +604,6 @@ class bordspel:
             screen.blit(arrow,(0,0))
     def handleiding():
         screen.blit(page1,(0,0))
-
         #terug knop
         pygame.draw.rect(screen, BLUE, [screenWidth/2 - 440, 530, 90, 40])
         screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800]) 
@@ -704,6 +669,46 @@ class bordspel:
         screen.blit(text100a, [screenWidth/2 - 75, 80])
         pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 150, 400, 400]) 
         screen.blit(text100b, [screenWidth/2 - 110, 170])
+        screen.blit(text999, [screenWidth/2 - 110, 170])
+        #database
+        def interact_with_database(command):
+            # Connect and set up cursor
+            connection = psycopg2.connect("dbname=pr2 user=Ali password=0000")
+            cursor = connection.cursor()
+    
+            # Execute the command
+            cursor.execute(command)
+            connection.commit()
+
+            # Save results
+            results = None
+            try:
+                results = cursor.fetchall()
+            except psycopg2.ProgrammingError:
+                #Nothing to fetch
+                pass
+
+            print(results)
+            # Close connection
+            cursor.close()
+            connection.close()
+    
+            return results
+            # Uploads a score into the hiscore table
+            def upload_score(name, score):
+                interact_with_database("UPDATE test SET score = score WHERE name = name".format(name, score))
+
+        # Downloads score data from database
+        def download_scores():
+            return interact_with_database("SELECT * FROM test")
+
+        # Downloads the top score from database
+        def download_top_score():
+              result = interact_with_database("SELECT * FROM test ORDER BY score")[0][1]
+              return result
+              upload_score(str(input("Name: ")), str(input("Score: ")))
+
+       
 
     def spel():
         #pygame.mixer.music.play(-1)
@@ -914,16 +919,15 @@ while not done:
                         for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
                             if event.type == pygame.QUIT:
                                 done = True
-            if left_mouse == 1:
-                mx, my = pygame.mouse.get_pos()
-                if 450 < my < 500 and screenWidth/2 + 500 > mx > screenWidth/2 - 500: #'highscore'
-                    bordspel.highscore()
-                    pygame.display.update()
-                    done = False
-                    while not done:
-                        for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
-                            if event.type == pygame.QUIT:
-                                done = True  
+
+            if 450 < my < 500 and screenWidth/2 + 500 > mx > screenWidth/2 - 500: #'highscore'
+                bordspel.highscore()
+                pygame.display.update()
+                done = False
+                while not done:
+                    for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
+                        if event.type == pygame.QUIT:
+                            done = True  
            
             if 250 < my < 300 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'aantal spelers'
                 error10 = 0
