@@ -2,7 +2,7 @@ from pygame.locals import *
 import pygame, string, random, psycopg2
 from math import pi
 pygame.init()
-#vraag
+
 # Background image is set as 'bg'
 bg = pygame.image.load("FOTO achtergrond.png")
 vink = pygame.image.load("FOTO groen vinkje.png")
@@ -13,9 +13,13 @@ correct = pygame.image.load("FOTO correct.png")
 correct_verder = pygame.image.load("FOTO correct_verder.png")
 incorrect = pygame.image.load("FOTO incorrect.png")
 page1 = pygame.image.load("page1.jpg")
+<<<<<<< HEAD
 page2 = pygame.image.load("page2.jpg")
 page3 = pygame.image.load("page3.jpg")
 page4 = pygame.image.load("page4.jpg")
+=======
+
+>>>>>>> origin/master
 #sounds
 #pygame.mixer.music.load('got.mp3')
 
@@ -38,10 +42,10 @@ pc2knop = 0
 pc3knop = 0
 pc4knop = 0
 
-# Use the database
+#database
 def interact_with_database(command):
     # Connect and set up cursor
-    connection = psycopg2.connect("dbname=pr2 user=postgres")
+    connection = psycopg2.connect("dbname=pr2 user=Ali password=0000")
     cursor = connection.cursor()
     
     # Execute the command
@@ -53,9 +57,10 @@ def interact_with_database(command):
     try:
         results = cursor.fetchall()
     except psycopg2.ProgrammingError:
-        # Nothing to fetch
+        #Nothing to fetch
         pass
 
+    print(results)
     # Close connection
     cursor.close()
     connection.close()
@@ -63,21 +68,22 @@ def interact_with_database(command):
     return results
 
 
-# Uploads a score into the hiscore table
-def upload_score(name, score):
-    interact_with_database("UPDATE score SET score = {} WHERE name = '{}'"
-                           .format(score, name))
+    # Uploads a score into the hiscore table
+    #def upload_score(name, score):
+    #    interact_with_database("UPDATE score SET score = score WHERE name = name".format(score, name))
 
 
 # Downloads score data from database
 def download_scores():
-    return interact_with_database("SELECT * FROM score")
+    return interact_with_database("SELECT * FROM test")
 
 
 # Downloads the top score from database
-def download_top_score():
-    result = interact_with_database("SELECT * FROM score ORDER BY score")[0][1]
-    return result
+#def download_top_score():
+    #  result = interact_with_database("SELECT * FROM score ORDER BY highscore")[0][1]
+    #  return result
+#upload_score(str(input("Score: ")), str(input("Name: ")))
+#print (results)
 
 
 #alle vragen
@@ -546,6 +552,9 @@ text31_b = fontsmall.render('| B. Euromast Park', True, BLACK)
 text31_c = fontsmall.render('| C. Plaswijckpark', True, BLACK)
 #text13-16 zijn bezet
 #20 21 42 43 zijn bezet
+text100 = font.render("Highscore", True, WHITE)
+text100a = fontsmall.render('Speler Highscores', True, WHITE)
+text100b = fontsmall.render('Loading Scores From Database', True, WHITE)
 text101 = font.render("Handleiding", True, WHITE)
 text108 = font.render("Next", True, WHITE)
 #begin values voor de start error
@@ -614,6 +623,10 @@ class bordspel:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 350, 400, 50])
         else:
             pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 350, 400, 50])
+        if my > 450 and my < 500 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
+            pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 450, 400, 50])
+        else:
+            pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 450, 400, 50])
         if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
             pygame.draw.rect(screen, GREY, [screenWidth/2 - 200, 550, 400, 50])
         else:
@@ -621,9 +634,10 @@ class bordspel:
         pygame.display.set_caption("The Euromast")
         screen.blit(text, [screenWidth/2 - 30, 157])
         screen.blit(text2, [screenWidth/2- 85, 257])
-        screen.blit(text3, [screenWidth/2 - 25, 357])
+        screen.blit(text3, [screenWidth/2 - 25, 557])
         screen.blit(text9, [300, 20])
-        screen.blit(text101, [screenWidth/2 - 75, 557])
+        screen.blit(text100, [screenWidth/2 - 55 , 457])
+        screen.blit(text101, [screenWidth/2 - 68, 357])
         #geef error als op start geklikt word
         if error10 == 1:
             screen.blit(text10, [15, 95]) #start-error
@@ -631,6 +645,7 @@ class bordspel:
         if error11 == 1:
             screen.blit(text11, [20, 100]) #start-error
             screen.blit(arrow,(0,0))
+
     def handleiding():
         
 
@@ -639,7 +654,7 @@ class bordspel:
         screen.blit(text7, [screenWidth/2 - 430, 530, 90, 800]) 
         #next knop
         pygame.draw.rect(screen, BLUE, [800, 530, 90, 40])
-        screen.blit(text108, [810, 538, 90, 800]) 
+        screen.blit(text108, [816, 532, 90, 800]) 
         
     def aantalspelers():
         screen.blit(bg,(0,0)) #draw background image
@@ -691,6 +706,14 @@ class bordspel:
                 n4.draw(screen)
 
         pygame.display.set_caption("The Euromast - Aantal Spelers")
+
+    def highscore():
+        screen.blit(bg,(0,0))
+        mx, my = pygame.mouse.get_pos()
+        pygame.draw.rect(screen, LIGHT_BLUE, [screenWidth/2 - 200, 70, 400, 50]) 
+        screen.blit(text100a, [screenWidth/2 - 75, 80])
+        pygame.draw.rect(screen, BLACK, [screenWidth/2 - 200, 150, 400, 400]) 
+        screen.blit(text100b, [screenWidth/2 - 110, 170])
 
     def spel():
         #pygame.mixer.music.play(-1)
@@ -801,8 +824,12 @@ while not done:
     (left_mouse, middle_mouse, right_mouse) = pygame.mouse.get_pressed() #user input on the mouse (boolean int)
     if left_mouse == 1:
             mx, my = pygame.mouse.get_pos()
+<<<<<<< HEAD
             if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:
                 screen.blit(page1,(0,0))
+=======
+            if 350 < my < 400 and screenWidth/2 + 200 > mx > screenWidth/2 - 200:
+>>>>>>> origin/master
                 bordspel.handleiding()
                 pygame.display.update()
                 sub2done = False
@@ -920,7 +947,17 @@ while not done:
                         for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
                             if event.type == pygame.QUIT:
                                 done = True
-             
+            if left_mouse == 1:
+                mx, my = pygame.mouse.get_pos()
+                if 450 < my < 500 and screenWidth/2 + 500 > mx > screenWidth/2 - 500: #'highscore'
+                    bordspel.highscore()
+                    pygame.display.update()
+                    done = False
+                    while not done:
+                        for event in pygame.event.get(): # User input kan worden opgehaald -> print(event)
+                            if event.type == pygame.QUIT:
+                                done = True  
+
             if 250 < my < 300 and screenWidth/2 + 200 > mx > screenWidth/2 - 200: #'aantal spelers'
                 error10 = 0
                 error11 = 0
@@ -1186,7 +1223,8 @@ while not done:
                             quit() 
                             #('subdone' en 'done' True geven om beiden loops af te sluiten kan ook)
                             
-            if 350 < my < 400 and screenWidth/2 + 200 > mx > screenWidth/2 - 200:  #'exit'
+            if my > 550 and my < 600 and mx < screenWidth/2 + 200 and mx > screenWidth/2 - 200:  #'exit'
+                pygame.quit()
                 quit()
             
             

@@ -1,0 +1,9 @@
+exit knop naar sprint 3 (terug naar menu ipv exit)
+
+speler naam geven : speler 1 2 3
+
+stappen zetten naar sprint 3
+
+highscore en bewegen naar sprint 3
+
+12 uur vergadering
