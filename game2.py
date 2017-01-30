@@ -1,5 +1,6 @@
 from pygame.locals import *
 import pygame, string, random, psycopg2
+from test import *
 from math import pi
 pygame.init()
 
