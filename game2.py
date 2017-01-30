@@ -821,20 +821,26 @@ while not done:
                                                 pijltje = False
                                                 while not pijltje:
                                                     for event in pygame.event.get():
-                                                        if event.type == KEYUP:
-                                                            #poppetje omhoog laten klimmen
-                                                            screen.blit(correct_verder,(0,0))
-                                                            pijltje = True
+                                                        if event.type == KEYUP or event.type == MOUSEBUTTONDOWN:
+                                                            mx, my = pygame.mouse.get_pos()
+                                                            if 515 < my < 578 and 475 < mx < 544 or event.type == KEYUP:
+                                                                #poppetje omhoog laten klimmen
+                                                                screen.blit(correct_verder,(0,0))
+                                                                pijltje = True
                                                             
-                                                        if event.type == K_LEFT:
-                                                            #poppetje omhoog en links laten klimmen
-                                                            screen.blit(correct_verder,(0,0))
-                                                            pijltje = True
+                                                        if event.type == K_LEFT or event.type == MOUSEBUTTONDOWN:
+                                                            mx, my = pygame.mouse.get_pos()
+                                                            if 515 < my < 578 and 400 < mx < 470 or event.type == K_LEFT:
+                                                                #poppetje omhoog en links laten klimmen
+                                                                screen.blit(correct_verder,(0,0))
+                                                                pijltje = True
 
-                                                        if event.type == K_RIGHT:
-                                                            #poppetje omhoog en rechts laten klimmen
-                                                            screen.blit(correct_verder,(0,0))
-                                                            pijltje = True
+                                                        if event.type == K_RIGHT or event.type == MOUSEBUTTONDOWN:
+                                                            mx, my = pygame.mouse.get_pos()
+                                                            if 515 < my < 578 and 550 < mx < 618 or event.type == K_RIGHT:
+                                                                #poppetje omhoog en rechts laten klimmen
+                                                                screen.blit(correct_verder,(0,0))
+                                                                pijltje = True
                                                         pygame.display.update()
                                                         if event.type == pygame.QUIT:
                                                             quit()
@@ -844,7 +850,6 @@ while not done:
                                                 for event in pygame.event.get():
                                                     if event.type == pygame.MOUSEBUTTONDOWN:
                                                         mx, my = pygame.mouse.get_pos()
-                                                        print(event)
                                                         if 507 < my < 555 and 55 < mx < 192:
                                                             verdergeklikt = True
                                                             beurtvoorbij = True
